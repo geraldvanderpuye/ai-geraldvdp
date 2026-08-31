@@ -1,6 +1,6 @@
 # Gerald Vanderpuye AI landing page
 
-This directory contains the complete static landing page for `ai.geraldvdp.com`.
+This directory contains the complete static landing page for `www.gvdp.co.uk`.
 
 ## Source
 
@@ -29,7 +29,7 @@ Current Vercel URL: <https://gvdp-site.vercel.app/>
 
 Push to `main` on GitHub — the Vercel project **gvdp-site** (Impact Brixton team) auto-deploys production; branches get preview URLs. Do not use `vercel deploy` from the CLI: the local `.vercel/` folder points at a superseded project.
 
-The custom domain `ai.geraldvdp.com` has not been connected yet.
+The custom domain is `www.gvdp.co.uk` (apex redirects to www).
 
 ## Remaining placeholders
 

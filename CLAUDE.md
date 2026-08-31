@@ -1,11 +1,11 @@
-# ai.geraldvdp.com — project context
+# www.gvdp.co.uk — project context
 
 Editorial landing page for Gerald Vanderpuye's AI consultancy (brand: Gerald; company: GVDP Ltd; programme: Think AI-Native). Static page + one Vercel serverless function, no framework, no build step.
 
 ## Workflow
 - `index.html` is the entire site (inline CSS/JS) + `assets/` + `api/ask.js` (the Ask Gerald form backend). Do not split the page into more files without being asked.
 - Deploys: push to `main` → Vercel project **gvdp-site** (Impact Brixton team) auto-deploys production; branches get preview URLs. Never use `vercel deploy` from CLI — the `.vercel/` folder points at a superseded project.
-- Target domain: **ai.geraldvdp.com** (not yet attached). geraldvdp.com root stays his Substack.
+- Domain: **www.gvdp.co.uk** (apex 308-redirects to www; attached to gvdp-site 2026-08-31, DNS at Squarespace). geraldvdp.com root stays his Substack; the earlier ai.geraldvdp.com plan was dropped in favour of the purchased gvdp.co.uk.
 
 ## Voice & design rules (do not violate)
 - First person singular, honest, short sentences, em-dashes, concrete numbers, zero hype, no exclamation marks. "I work with", never "we help".
@@ -18,7 +18,7 @@ The Ask Gerald form POSTs JSON to `/api/ask`, which (a) drafts a first answer wi
 
 ## Open work (in order)
 1. Add `ANTHROPIC_API_KEY` and `RESEND_API_KEY` env vars in Vercel (see above). Resend test mode only delivers to the account owner's email — sign up with gerald@hey.com, or verify a sending domain.
-2. Attach ai.geraldvdp.com in Vercel → Settings → Domains; DNS is Google Cloud DNS (ns-cloud-b*.googledomains.com) — add CNAME `ai` → `cname.vercel-dns.com` there.
+2. Confirm www.gvdp.co.uk DNS: Squarespace custom records A `@` → 216.150.1.1 and CNAME `www` → 6229057d74f646ff.vercel-dns-016.com.
 3. Real client pull-quote when Gerald supplies one; company number in footer once the VCC Ltd → GVDP Ltd rename completes.
 
 Approved proof points: Brixton Brewery (part of Heineken), Levy Real Estate, Lambeth Council-funded programmes, Brixton BID, Stripe partnership, Loop (£5k first 10 days, built solo), ~£15k saved / ~5x traffic rebuilding his own sites.
