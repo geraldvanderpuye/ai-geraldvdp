@@ -22,7 +22,7 @@ The Ask Gerald form POSTs JSON to `/api/ask`, which (a) drafts a first answer wi
 
 ## Open work (in order)
 1. Add `ANTHROPIC_API_KEY` and `RESEND_API_KEY` env vars in Vercel (see above). Resend test mode only delivers to the account owner's email — sign up with gerald@hey.com, or verify a sending domain.
-2. Stripe partnership band is a labelled placeholder until the official mark and wording land; Heineken-session photo slot pending a real photo.
+2. Stripe partnership band removed from the page 2026-08-31 (Gerald's call) — the Stripe mention in the evidence client-line stays; re-add a band only if he asks. Heineken-session photo still pending a real photo. Ratio Property pull-quote pending the founder's sign-off (drafts sent to Gerald).
 3. Real client pull-quote when Gerald supplies one; company number in footer once the VCC Ltd → GVDP Ltd rename completes.
 
 Copy overhaul done 2026-08-31: businesses positioning, four own-venture stories replace Duolingo/Intercom, diagnostic checklist ("fraction of what AI is worth" hook), single training offer in three formats. Form backend live (topics: question / workshop / loop).
