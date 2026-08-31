@@ -18,7 +18,8 @@ The Ask Gerald form POSTs JSON to `/api/ask`, which (a) drafts a first answer wi
 
 ## Open work (in order)
 1. Add `ANTHROPIC_API_KEY` and `RESEND_API_KEY` env vars in Vercel (see above). Resend test mode only delivers to the account owner's email — sign up with gerald@hey.com, or verify a sending domain.
-2. Confirm www.gvdp.co.uk DNS: Squarespace custom records A `@` → 216.150.1.1 and CNAME `www` → 6229057d74f646ff.vercel-dns-016.com.
-3. Real client pull-quote when Gerald supplies one; company number in footer once the VCC Ltd → GVDP Ltd rename completes.
+2. Real client pull-quote when Gerald supplies one; company number in footer once the VCC Ltd → GVDP Ltd rename completes.
+
+Domain went live 2026-08-31: Squarespace custom records A `@` → 216.150.1.1 and CNAME `www` → 6229057d74f646ff.vercel-dns-016.com; all three domains show Valid Configuration in Vercel.
 
 Approved proof points: Brixton Brewery (part of Heineken), Levy Real Estate, Lambeth Council-funded programmes, Brixton BID, Stripe partnership, Loop (£5k first 10 days, built solo), ~£15k saved / ~5x traffic rebuilding his own sites.
