@@ -312,6 +312,23 @@
       .submit-button:hover { background: linear-gradient(90deg, var(--orange), var(--amber)); color: var(--ink); border-color: var(--orange); }
       .form-fallback { margin: 0; font-size: .8rem; }
       .form-status { min-height: 1.6em; margin: 0; font-size: .85rem; }
+      .field-hp { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+      .first-answer {
+        margin-top: 1.6rem;
+        padding: 1.4rem 1.5rem 1.5rem;
+        background: var(--paper-deep);
+        border-left: 3px solid var(--orange);
+      }
+      .first-answer .answer-label {
+        margin: 0 0 .9rem;
+        font-size: .68rem;
+        font-weight: 800;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .first-answer p { margin: 0 0 .9rem; font-size: .95rem; }
+      .first-answer p:last-child { margin-bottom: 0; }
       .letter-link { display: inline-block; margin-top: 3rem; font-style: italic; }
 
       .site-footer {
@@ -497,7 +514,11 @@
             <p>Whatever you’re wondering about AI and your business — ask. I read every one and I answer personally.</p>
             <a class="letter-link" href="https://geraldvdp.com">Not ready to ask? Read the letter →</a>
           </div>
-          <form action="[FORM_ENDPOINT]" method="post" id="question-form">
+          <form action="/api/ask" method="post" id="question-form">
+            <div class="field-hp" aria-hidden="true">
+              <label for="website">Leave this field empty</label>
+              <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+            </div>
             <div class="field">
               <label for="name">Name</label>
               <input id="name" name="name" type="text" autocomplete="name" required>
@@ -516,7 +537,7 @@
             </div>
             <div class="submit-row">
               <button class="submit-button" type="submit">Ask Gerald</button>
-              <p class="form-fallback">Or <a href="mailto:[EMAIL_ADDRESS]?subject=AI%20question">send an email</a>.</p>
+              <p class="form-fallback">Or <a href="mailto:gerald@hey.com?subject=AI%20question">send an email</a>.</p>
             </div>
             <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
           </form>
@@ -547,10 +568,49 @@
 
       const questionForm = document.getElementById("question-form");
       const formStatus = document.getElementById("form-status");
-      questionForm.addEventListener("submit", (event) => {
-        if (questionForm.getAttribute("action") === "[FORM_ENDPOINT]") {
-          event.preventDefault();
-          formStatus.textContent = "This form is ready for its final connection. For now, use the email link above.";
+      const submitButton = questionForm.querySelector(".submit-button");
+
+      function showFirstAnswer(answer) {
+        const block = document.createElement("div");
+        block.className = "first-answer";
+        const label = document.createElement("p");
+        label.className = "answer-label";
+        label.textContent = "While you wait — a first answer, drafted by my AI";
+        block.appendChild(label);
+        answer.split(/\n{2,}/).forEach((part) => {
+          const p = document.createElement("p");
+          p.textContent = part.trim();
+          if (p.textContent) block.appendChild(p);
+        });
+        questionForm.appendChild(block);
+      }
+
+      questionForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const data = Object.fromEntries(new FormData(questionForm));
+        submitButton.disabled = true;
+        formStatus.textContent = "Sending — and drafting a first answer. Give it a moment.";
+        try {
+          const response = await fetch(questionForm.getAttribute("action"), {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          });
+          const result = await response.json().catch(() => null);
+          if (!response.ok || !result || !result.ok) throw new Error("send failed");
+          questionForm.querySelectorAll(".field, .submit-row").forEach((el) => { el.hidden = true; });
+          formStatus.textContent = "Got it. Your question is on its way to my inbox — I'll reply to " + data.email + " personally.";
+          if (result.answer) showFirstAnswer(result.answer);
+        } catch (error) {
+          submitButton.disabled = false;
+          const subject = encodeURIComponent("AI question");
+          const body = encodeURIComponent(data.message + "\n\n— " + data.name + (data.company ? ", " + data.company : ""));
+          formStatus.innerHTML = "That didn't go through. ";
+          const link = document.createElement("a");
+          link.href = "mailto:gerald@hey.com?subject=" + subject + "&body=" + body;
+          link.textContent = "Send it by email instead";
+          formStatus.appendChild(link);
+          formStatus.appendChild(document.createTextNode(" — your question is already filled in."));
         }
       });
     </script>
