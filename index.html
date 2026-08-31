@@ -356,6 +356,8 @@
       }
       .offering dt { font-family: var(--serif); font-size: clamp(1.7rem, 3vw, 2.8rem); line-height: 1.05; }
       .offering dd { max-width: 38rem; margin: 0; font-size: 1.05rem; }
+      .offer-cta { display: inline-block; margin-top: .7rem; font-size: .72rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+      .offer-footnote { margin: 2rem 0 0; color: var(--muted); font-size: .84rem; }
 
       .question {
         background: #dfd3c1;
@@ -467,7 +469,7 @@
     <main id="main">
       <header class="site-head" id="gerald">
         <img class="brand" src="assets/logo-horizontal.png" width="1344" height="256" alt="Gerald VDP">
-        <a class="head-link" href="#question">Ask a question</a>
+        <a class="head-link" data-topic="workshop" href="#question">Book a workshop</a>
       </header>
 
       <section class="intro" aria-labelledby="intro-title">
@@ -510,7 +512,7 @@
               <div class="shift-row"><dt>After</dt><dd>One CRM that drafts them — you approve, one at a time.</dd></div>
             </dl>
             <p>If your business has repeat customers — members, subscribers, regulars — Loop starts from free.</p>
-            <a class="source-link" id="loop-cta" href="#question">Get Loop — start free →</a>
+            <a class="source-link" id="loop-cta" data-topic="loop" href="#question">Get Loop — start free →</a>
           </div>
         </div>
         <div class="photo-placeholder photo-placeholder--hands" role="img" aria-label="Placeholder for a close-up documentary photograph of Gerald building on a laptop">
@@ -612,22 +614,23 @@
         <p class="eyebrow">Think AI-Native</p>
         <div class="offerings-intro">
           <h2 id="offerings-title">What I actually do.</h2>
-          <p>Three ways to bring the work into the room. Each starts with a real AI, product, customer, go-to-market or growth question.</p>
+          <p>Three ways to work with me. The workshop is where most people start.</p>
         </div>
         <dl class="offering-list">
           <div class="offering">
-            <dt>Live, in London.</dt>
-            <dd>Think AI-Native workshops, hosted at <a href="https://impactbrixton.com" target="_blank" rel="noopener">Impact Brixton</a> — my coworking space — built around real work and real questions.</dd>
+            <dt>Workshops.</dt>
+            <dd>The Learn workshop: move from just chatting with ChatGPT to connecting the tools you already use, so AI works natively in ChatGPT or Claude. 90 minutes to three hours — live at <a href="https://impactbrixton.com" target="_blank" rel="noopener">Impact Brixton</a>, streamed anywhere, or in-house at your company. <a class="offer-cta" data-topic="workshop" href="#question">Book a workshop →</a></dd>
           </div>
           <div class="offering">
-            <dt>Streamed anywhere.</dt>
-            <dd>The same live workshop, online, for teams working in different places.</dd>
+            <dt>Building.</dt>
+            <dd>Everything above was built this way. When your business needs its own AI-native product or system, we build it together.</dd>
           </div>
           <div class="offering">
-            <dt>In-house at your company.</dt>
-            <dd>A session shaped around what your people actually need to understand, build, take to market or grow.</dd>
+            <dt>Consultancy.</dt>
+            <dd>For teams that need to think AI-natively about product, customers and growth — the work I do with companies like Heineken and real-estate firms.</dd>
           </div>
         </dl>
+        <p class="offer-footnote">All three start the same way: the form below. Tell me where you are and I’ll tell you honestly what fits.</p>
       </section>
 
       <section class="newsletter reveal" id="letter" aria-labelledby="newsletter-title">
@@ -664,6 +667,7 @@
             <fieldset class="topic-toggle">
               <legend class="visually-hidden">What is this about?</legend>
               <label><input type="radio" name="topic" value="question" checked><span>I have a question</span></label>
+              <label><input type="radio" name="topic" value="workshop"><span>Book a workshop</span></label>
               <label><input type="radio" name="topic" value="loop"><span>I want Loop access</span></label>
             </fieldset>
             <div class="field">
@@ -717,13 +721,12 @@
       const formStatus = document.getElementById("form-status");
       const submitButton = questionForm.querySelector(".submit-button");
 
-      const loopCta = document.getElementById("loop-cta");
-      if (loopCta) {
-        loopCta.addEventListener("click", () => {
-          const loopRadio = questionForm.querySelector('input[name="topic"][value="loop"]');
-          if (loopRadio) loopRadio.checked = true;
+      document.querySelectorAll("a[data-topic]").forEach((link) => {
+        link.addEventListener("click", () => {
+          const radio = questionForm.querySelector('input[name="topic"][value="' + link.dataset.topic + '"]');
+          if (radio) radio.checked = true;
         });
-      }
+      });
 
       function showFirstAnswer(answer) {
         const block = document.createElement("div");
@@ -756,7 +759,9 @@
           questionForm.querySelectorAll(".field, .submit-row, .topic-toggle").forEach((el) => { el.hidden = true; });
           formStatus.textContent = data.topic === "loop"
             ? "Got it. Your Loop request is on its way to my inbox — I'll set you up and reply to " + data.email + " personally."
-            : "Got it. Your question is on its way to my inbox — I'll reply to " + data.email + " personally.";
+            : data.topic === "workshop"
+              ? "Got it. Your workshop enquiry is on its way to my inbox — I'll reply to " + data.email + " personally to sort a date."
+              : "Got it. Your question is on its way to my inbox — I'll reply to " + data.email + " personally.";
           if (result.answer) showFirstAnswer(result.answer);
         } catch (error) {
           submitButton.disabled = false;
