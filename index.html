@@ -197,6 +197,9 @@
       }
       .photo-placeholder--wide { aspect-ratio: 16 / 7; }
       .photo-placeholder--hands { background: #c6a27f; aspect-ratio: 16 / 6; }
+      .photo-figure { margin: clamp(4rem, 8vw, 7rem) 0 0; }
+      .photo-figure img { width: 100%; height: auto; filter: saturate(.85) contrast(1.02); }
+      .photo-figure figcaption { margin-top: .7rem; color: var(--muted); font-size: .72rem; letter-spacing: .05em; }
 
       .pullquote {
         width: min(92vw, 1240px);
@@ -575,9 +578,10 @@
             <a class="source-link" href="https://impactbrixton.com" target="_blank" rel="noopener">See Impact Brixton ↗</a>
           </div>
         </div>
-        <div class="photo-placeholder photo-placeholder--wide" role="img" aria-label="Placeholder for a documentary photograph of workshop attendees when an idea becomes clear">
-          <span>Photography placeholder — attendees at the moment something lands. Wide, documentary crop.</span>
-        </div>
+        <figure class="photo-figure">
+          <img src="assets/workshop-audience.jpg" width="1600" height="1066" loading="lazy" alt="A full audience watching Gerald Vanderpuye lead a live AI workshop at Impact Brixton">
+          <figcaption>A full room for the live AI workshop at Impact Brixton.</figcaption>
+        </figure>
       </section>
 
       <section class="evidence reveal" aria-labelledby="evidence-title">
@@ -594,9 +598,10 @@
             <p class="client-line">Experience across Rackspace, GCP and machine learning. Workshops and programmes delivered for Brixton Brewery, part of Heineken · Levy Real Estate · Lambeth Council-funded programmes · Brixton BID · small businesses · community AI events in partnership with Stripe.</p>
           </div>
         </div>
-        <div class="photo-placeholder photo-placeholder--wide" role="img" aria-label="Placeholder for a close-up documentary photograph of a workshop whiteboard">
-          <span>Photography placeholder — close-up of a whiteboard with real workshop diagrams. Documentary crop.</span>
-        </div>
+        <figure class="photo-figure">
+          <img src="assets/workshop-room.jpg" width="1600" height="1066" loading="lazy" alt="Gerald Vanderpuye teaching a packed AI workshop at Impact Brixton">
+          <figcaption>Teaching the room to think AI-native, live at Impact Brixton.</figcaption>
+        </figure>
       </section>
 
       <section class="equity reveal" aria-label="Gerald Vanderpuye quote about democratized intelligence">
