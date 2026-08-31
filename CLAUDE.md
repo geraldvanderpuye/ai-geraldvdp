@@ -13,7 +13,7 @@ Editorial landing page for Gerald Vanderpuye's AI consultancy (brand: Gerald; co
 - "I" owns all promises and opinions. "We" only after the developers have been introduced by name/role; never an anonymous corporate "we".
 - The page sells ONE offer: the training sessions. Build and advisory are sold in the room, never on the page. Gerald-as-builder stays as proof ("I still build every week", the venture stories).
 - "Cowork", "Skills" and other vendor product names don't appear in copy (MCP is the one allowed term of art — the gotcha is intentional).
-- Editorial magazine look: Fraunces serif at scale, warm paper background, pull-quote interludes. Orange→amber gradient ONLY in the masthead, the Ask Gerald button hover, and one accent word.
+- Editorial magazine look: Fraunces serif at scale, warm paper background, pull-quote interludes. Orange→amber gradient ONLY in the masthead, the Ask Gerald button hover, the hero's "something new.", and one pull-quote accent word.
 - Banned: gradient blobs, icon grids, feature cards, logo carousels, chat widgets, popups, stat counters, stock imagery, testimonial sliders.
 - Never invent client quotes. No pricing on the page. No follower counts. Don't name universities. Keep the photography placeholders labelled until the real shoot happens.
 
