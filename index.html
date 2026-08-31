@@ -100,6 +100,8 @@
         mix-blend-mode: multiply;
       }
       .head-link { font-size: .72rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+      .head-links { display: flex; gap: 1.6rem; align-items: center; }
+      .head-link--quiet { color: var(--muted); }
       .eyebrow { margin: 0 0 1.3rem; font-size: .7rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
       .intro {
         width: min(92vw, 1240px);
@@ -153,7 +155,8 @@
         margin: 0 auto;
         padding: clamp(4rem, 8vw, 7rem) 0 0;
       }
-      .examples-lede p:not(.eyebrow) { max-width: 41rem; margin: 0; font-size: clamp(1.08rem, 1.4vw, 1.32rem); }
+      .examples-lede p:not(.eyebrow) { max-width: 41rem; margin: 0 0 1.25rem; font-size: clamp(1.08rem, 1.4vw, 1.32rem); }
+      .examples-lede p:last-child { margin-bottom: 0; }
       .story {
         width: min(92vw, 1240px);
         margin: 0 auto;
@@ -472,7 +475,10 @@
     <main id="main">
       <header class="site-head" id="gerald">
         <img class="brand" src="assets/logo-horizontal.png" width="1344" height="256" alt="Gerald VDP">
-        <a class="head-link" data-topic="workshop" href="#question">Book a workshop</a>
+        <nav class="head-links" aria-label="Page navigation">
+          <a class="head-link head-link--quiet" href="#offerings">What I do</a>
+          <a class="head-link" data-topic="workshop" href="#question">Book a workshop</a>
+        </nav>
       </header>
 
       <section class="intro" aria-labelledby="intro-title">
@@ -499,6 +505,7 @@
 
       <section class="examples-lede reveal" aria-label="The GVDP umbrella">
         <p class="eyebrow">The umbrella</p>
+        <p>I do three things: I <strong>teach</strong> this in a workshop, I <strong>build</strong> it with you, and I <strong>advise</strong> while you do it. <a href="#offerings">The details are at the end →</a></p>
         <p>GVDP is the umbrella company for everything I build. What follows aren’t case studies I read about — they’re what we built when we decided each business should be AI-native from day one. <strong>I don’t just teach this. I build with it.</strong></p>
       </section>
 
@@ -616,7 +623,7 @@
         </div>
       </section>
 
-      <section class="offerings reveal" aria-labelledby="offerings-title">
+      <section class="offerings reveal" id="offerings" aria-labelledby="offerings-title">
         <p class="eyebrow">Think AI-Native</p>
         <div class="offerings-intro">
           <h2 id="offerings-title">What I actually do.</h2>
@@ -624,16 +631,16 @@
         </div>
         <dl class="offering-list">
           <div class="offering">
-            <dt>Workshops.</dt>
-            <dd>The Learn workshop: move from just chatting with ChatGPT to connecting the tools you already use, so AI works natively in ChatGPT or Claude. 90 minutes to three hours — live at <a href="https://impactbrixton.com" target="_blank" rel="noopener">Impact Brixton</a>, streamed anywhere, or in-house at your company. <a class="offer-cta" data-topic="workshop" href="#question">Book a workshop →</a></dd>
+            <dt>Learn — the workshop.</dt>
+            <dd>For people and teams still typing questions into ChatGPT. In 90 minutes to three hours we connect AI to the tools you already work in, on your own real work — so you leave using ChatGPT or Claude natively, not watching demos. Companies book a private session — live at <a href="https://impactbrixton.com" target="_blank" rel="noopener">Impact Brixton</a>, streamed, or in-house — and I run public sessions you can join on your own. <a class="offer-cta" data-topic="workshop" href="#question">Book a workshop →</a></dd>
           </div>
           <div class="offering">
-            <dt>Building.</dt>
-            <dd>Everything above was built this way. When your business needs its own AI-native product or system, we build it together.</dd>
+            <dt>Build — with you.</dt>
+            <dd>The four things above were built this way. Bring one real problem — the admin that eats your week, the follow-ups that never happen — and we build the AI-native tool that removes it. I lead it, the technical people I build with join where the job needs more hands, and your team owns what we make.</dd>
           </div>
           <div class="offering">
-            <dt>Consultancy.</dt>
-            <dd>For teams that need to think AI-natively about product, customers and growth — the work I do with companies like Heineken and real-estate firms.</dd>
+            <dt>Advise — while you do it.</dt>
+            <dd>Ongoing advisory for founders and leadership teams making AI decisions: what to build, what customers actually need, where growth comes from. Regular sessions over months, from someone who ships daily — the work I do with companies like Heineken and real-estate firms.</dd>
           </div>
         </dl>
         <p class="offer-footnote">All three start the same way: the form below. Tell me where you are and I’ll tell you honestly what fits.</p>
