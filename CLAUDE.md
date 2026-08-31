@@ -9,6 +9,10 @@ Editorial landing page for Gerald Vanderpuye's AI consultancy (brand: Gerald; co
 
 ## Voice & design rules (do not violate)
 - First person singular, honest, short sentences, em-dashes, concrete numbers, zero hype, no exclamation marks. "I work with", never "we help".
+- The customer is the subject of every value-proposition sentence ("Your team...", not "I...").
+- "I" owns all promises and opinions. "We" only after the developers have been introduced by name/role; never an anonymous corporate "we".
+- The page sells ONE offer: the training sessions. Build and advisory are sold in the room, never on the page. Gerald-as-builder stays as proof ("I still build every week", the venture stories).
+- "Cowork", "Skills" and other vendor product names don't appear in copy (MCP is the one allowed term of art — the gotcha is intentional).
 - Editorial magazine look: Fraunces serif at scale, warm paper background, pull-quote interludes. Orange→amber gradient ONLY in the masthead, the Ask Gerald button hover, and one accent word.
 - Banned: gradient blobs, icon grids, feature cards, logo carousels, chat widgets, popups, stat counters, stock imagery, testimonial sliders.
 - Never invent client quotes. No pricing on the page. No follower counts. Don't name universities. Keep the photography placeholders labelled until the real shoot happens.
@@ -18,7 +22,10 @@ The Ask Gerald form POSTs JSON to `/api/ask`, which (a) drafts a first answer wi
 
 ## Open work (in order)
 1. Add `ANTHROPIC_API_KEY` and `RESEND_API_KEY` env vars in Vercel (see above). Resend test mode only delivers to the account owner's email — sign up with gerald@hey.com, or verify a sending domain.
-2. Real client pull-quote when Gerald supplies one; company number in footer once the VCC Ltd → GVDP Ltd rename completes.
+2. Stripe partnership band is a labelled placeholder until the official mark and wording land; Heineken-session photo slot pending a real photo.
+3. Real client pull-quote when Gerald supplies one; company number in footer once the VCC Ltd → GVDP Ltd rename completes.
+
+Copy overhaul done 2026-08-31: businesses positioning, four own-venture stories replace Duolingo/Intercom, diagnostic checklist ("fraction of what AI is worth" hook), single training offer in three formats. Form backend live (topics: question / workshop / loop).
 
 Domain went live 2026-08-31: Squarespace custom records A `@` → 216.150.1.1 and CNAME `www` → 6229057d74f646ff.vercel-dns-016.com; all three domains show Valid Configuration in Vercel.
 

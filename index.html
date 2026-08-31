@@ -4,16 +4,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Gerald Vanderpuye — AI, from good to great</title>
-    <meta name="description" content="I help businesses think AI-native about what they build, how they take it to market and where growth comes from.">
+    <meta name="description" content="AI training for businesses that want to run on it — not just use it.">
     <meta name="theme-color" content="#f2ecdf">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.gvdp.co.uk/">
     <meta property="og:title" content="Gerald Vanderpuye — AI, from good to great">
-    <meta property="og:description" content="A good business uses AI to move faster. A great one uses it to choose a different direction.">
+    <meta property="og:description" content="AI training for businesses that want to run on it — not just use it.">
     <meta property="og:image" content="https://www.gvdp.co.uk/assets/logo-square.png">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Gerald Vanderpuye — AI, from good to great">
-    <meta name="twitter:description" content="A good business uses AI to move faster. A great one uses it to choose a different direction.">
+    <meta name="twitter:description" content="AI training for businesses that want to run on it — not just use it.">
     <meta name="twitter:image" content="https://www.gvdp.co.uk/assets/logo-square.png">
     <link rel="canonical" href="https://www.gvdp.co.uk/">
     <link rel="icon" href="assets/logo-square.png" type="image/png">
@@ -150,6 +150,28 @@
         line-height: .96;
       }
 
+      .diagnostic {
+        width: min(92vw, 1240px);
+        margin: 0 auto;
+        padding: clamp(5rem, 10vw, 9rem) 0 0;
+      }
+      .diagnostic-intro { max-width: 41rem; margin: 0 0 2.2rem; font-size: clamp(1.08rem, 1.4vw, 1.32rem); }
+      .diagnostic-list {
+        max-width: 52rem;
+        margin: 0 0 2.2rem;
+        padding: 0;
+        list-style: none;
+        border-top: 1px solid var(--line);
+      }
+      .diagnostic-list li {
+        padding: 1.1rem 0;
+        border-bottom: 1px solid var(--line);
+        font-family: var(--serif);
+        font-size: clamp(1.15rem, 1.8vw, 1.6rem);
+        line-height: 1.3;
+      }
+      .diagnostic-closer { max-width: 41rem; margin: 0; font-size: clamp(1.08rem, 1.4vw, 1.32rem); }
+      .build-line { margin-top: 2.5rem !important; }
       .examples-lede {
         width: min(92vw, 1240px);
         margin: 0 auto;
@@ -476,8 +498,8 @@
       <header class="site-head" id="gerald">
         <img class="brand" src="assets/logo-horizontal.png" width="1344" height="256" alt="Gerald VDP">
         <nav class="head-links" aria-label="Page navigation">
-          <a class="head-link head-link--quiet" href="#offerings">What I do</a>
-          <a class="head-link" data-topic="workshop" href="#question">Book a workshop</a>
+          <a class="head-link head-link--quiet" href="#offerings">The sessions</a>
+          <a class="head-link" data-topic="workshop" href="#question">Book a session</a>
         </nav>
       </header>
 
@@ -492,19 +514,32 @@
           <p>I’m Gerald Vanderpuye. Businesses bring me in when AI has made their plan look suddenly small — good product, solid pipeline, and a sense that the ground is moving underneath both.</p>
           <p>The point is not to add AI at the end. It is to connect what AI makes possible with what your customers need and how your business grows.</p>
           <p>I’ve spent 15 years making that join. Computer science, then cloud at Rackspace — where I helped build the partnership with Google and took GCP and machine learning to market. Thirteen years running BuyerDeck, my own software company. Go-to-market taught to more than 1,000 companies — in incubators, accelerators and universities, inside scaling tech firms, and for venture funds who brought me in to teach their portfolio companies.</p>
-          <p><strong>I still build every week.</strong></p>
+          <p class="build-line"><strong>I still build every week.</strong></p>
           <p class="personal-aside">Away from the main work, I own a coworking space and a distillery in Brixton. I’m a hobbyist distiller too. We brought the area together to make the first Brixton Culture Capital rum.</p>
           <a class="quiet-link" href="https://www.geraldvdp.com">I write about AI, entrepreneurship and tech — without the hype →</a>
         </div>
       </section>
 
-      <section class="thesis" aria-label="What I offer">
-        <p>I teach this in a workshop. I build it with you. I advise while you do it.</p>
+      <section class="thesis" aria-label="The hook">
+        <p>You’re probably getting a fraction of what AI is worth.</p>
+      </section>
+
+      <section class="diagnostic reveal" aria-labelledby="diagnostic-title">
+        <p class="eyebrow">Here’s how you’d know</p>
+        <p id="diagnostic-title" class="diagnostic-intro">If any of these sound familiar, you’re leaving the biggest value on the table:</p>
+        <ul class="diagnostic-list">
+          <li>AI lives in a chat tab. It’s never touched your actual files and folders.</li>
+          <li>Nobody on your team could tell you what an MCP is — or why it matters.</li>
+          <li>You use one model for everything, instead of running agents across ChatGPT, Claude and Gemini.</li>
+          <li>Everything you do with AI is generic. None of it knows how your business actually runs.</li>
+          <li>You still buy software for problems you could now have built exactly to fit.</li>
+        </ul>
+        <p class="diagnostic-closer"><strong>None of this is advanced. It’s just the stuff nobody’s shown you yet. That’s what these sessions fix.</strong> <a href="#offerings">The sessions →</a></p>
       </section>
 
       <section class="examples-lede reveal" aria-label="What AI-native means">
         <p class="eyebrow">The idea</p>
-        <p>AI-native doesn’t mean putting AI into the business. It means reconsidering what the business could be. <a href="#offerings">How we work is at the end →</a></p>
+        <p>AI-native doesn’t mean putting AI into the business. It means reconsidering what the business could be. What follows is what that looks like when we do it to our own businesses.</p>
       </section>
 
       <section class="story" aria-labelledby="story-one-title">
@@ -624,24 +659,24 @@
       <section class="offerings reveal" id="offerings" aria-labelledby="offerings-title">
         <p class="eyebrow">Think AI-Native</p>
         <div class="offerings-intro">
-          <h2 id="offerings-title">What I actually do.</h2>
-          <p>Three ways to work with me. The workshop is where most people start.</p>
+          <h2 id="offerings-title">AI training for businesses that want to run on it — not just use it.</h2>
+          <p>Practical, hands-on sessions for teams and founders who already use AI and can tell they’re scratching the surface. You’ll build something real before you leave. No hype, no jargon, no slideware.</p>
         </div>
         <dl class="offering-list">
           <div class="offering">
-            <dt>Learn — the workshop.</dt>
-            <dd>For people and teams still typing questions into ChatGPT. In 90 minutes to three hours we connect AI to the tools you already work in, on your own real work — so you leave using ChatGPT or Claude natively, not watching demos. Companies book a private session — live at <a href="https://impactbrixton.com" target="_blank" rel="noopener">Impact Brixton</a>, streamed, or in-house — and I run public sessions you can join on your own. <a class="offer-cta" data-topic="workshop" href="#question">Book a workshop →</a></dd>
+            <dt>Live, in London.</dt>
+            <dd>At <a href="https://impactbrixton.com" target="_blank" rel="noopener">Impact Brixton</a>, my coworking space in Market Row — built around your real work and real questions. <a class="offer-cta" data-topic="workshop" href="#question">Book a session →</a></dd>
           </div>
           <div class="offering">
-            <dt>Build — with you.</dt>
-            <dd>The four things above were built this way. Bring one real problem — the admin that eats your week, the follow-ups that never happen — and we build the AI-native tool that removes it. I lead it, the technical people I build with join where the job needs more hands, and your team owns what we make.</dd>
+            <dt>Streamed anywhere.</dt>
+            <dd>The same live session, online, for teams working in different places.</dd>
           </div>
           <div class="offering">
-            <dt>Advise — while you do it.</dt>
-            <dd>Ongoing advisory for founders and leadership teams making AI decisions: what to build, what customers actually need, where growth comes from. Regular sessions over months, from someone who ships daily — the work I do with companies like Heineken and real-estate firms.</dd>
+            <dt>In-house at your company.</dt>
+            <dd>Shaped around what your team actually needs to understand and build.</dd>
           </div>
         </dl>
-        <p class="offer-footnote">All three start the same way: the form below. Tell me where you are and I’ll tell you honestly what fits.</p>
+        <p class="offer-footnote">Every session starts the same way: the form below. Tell me where you are and I’ll tell you honestly what fits.</p>
       </section>
 
       <section class="newsletter reveal" id="letter" aria-labelledby="newsletter-title">
@@ -678,7 +713,7 @@
             <fieldset class="topic-toggle">
               <legend class="visually-hidden">What is this about?</legend>
               <label><input type="radio" name="topic" value="question" checked><span>I have a question</span></label>
-              <label><input type="radio" name="topic" value="workshop"><span>Book a workshop</span></label>
+              <label><input type="radio" name="topic" value="workshop"><span>Book a session</span></label>
               <label><input type="radio" name="topic" value="loop"><span>I want Loop access</span></label>
             </fieldset>
             <div class="field">
