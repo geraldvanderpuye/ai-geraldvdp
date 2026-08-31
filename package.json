@@ -1,0 +1,8 @@
+{
+  "name": "ai-geraldvdp",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.122.0"
+  }
+}
