@@ -1,9 +1,9 @@
 # ai.geraldvdp.com — project context
 
-Editorial landing page for Gerald Vanderpuye's AI consultancy (brand: Gerald; company: GVDP Ltd; programme: Think AI-Native). Single static page, no framework, no build step.
+Editorial landing page for Gerald Vanderpuye's AI consultancy (brand: Gerald; company: GVDP Ltd; programme: Think AI-Native). Static page + one Vercel serverless function, no framework, no build step.
 
 ## Workflow
-- `index.html` is the entire site (inline CSS/JS) + `assets/`. Do not split into multiple files without being asked.
+- `index.html` is the entire site (inline CSS/JS) + `assets/` + `api/ask.js` (the Ask Gerald form backend). Do not split the page into more files without being asked.
 - Deploys: push to `main` → Vercel project **gvdp-site** (Impact Brixton team) auto-deploys production; branches get preview URLs. Never use `vercel deploy` from CLI — the `.vercel/` folder points at a superseded project.
 - Target domain: **ai.geraldvdp.com** (not yet attached). geraldvdp.com root stays his Substack.
 
@@ -13,10 +13,12 @@ Editorial landing page for Gerald Vanderpuye's AI consultancy (brand: Gerald; co
 - Banned: gradient blobs, icon grids, feature cards, logo carousels, chat widgets, popups, stat counters, stock imagery, testimonial sliders.
 - Never invent client quotes. No pricing on the page. No follower counts. Don't name universities. Keep the photography placeholders labelled until the real shoot happens.
 
+## Form backend (`api/ask.js`, shipped 2026-08-31)
+The Ask Gerald form POSTs JSON to `/api/ask`, which (a) drafts a first answer with Claude in Gerald's voice — clearly labelled as his AI on the page — and (b) emails the question + draft to Gerald via Resend. Each half degrades gracefully until its env var is set in Vercel (gvdp-site → Settings → Environment Variables): `ANTHROPIC_API_KEY` (Claude draft) and `RESEND_API_KEY` (email; optional `ASK_TO_EMAIL` defaults to gerald@hey.com, `ASK_FROM_EMAIL` defaults to Resend's onboarding sender). With neither set, the API returns 503 and the page falls back to a prefilled mailto:gerald@hey.com link — the form is never a dead end.
+
 ## Open work (in order)
-1. Replace `[FORM_ENDPOINT]` and `[EMAIL_ADDRESS]` in index.html (launch blocker).
-2. Attach ai.geraldvdp.com in Vercel → Settings → Domains; CNAME at the DNS host.
-3. v1.1 "AI-native": keep the page static; add a Vercel serverless function (`api/ask.js`) so the Ask Gerald form returns an instant Claude-drafted first answer in Gerald's voice (grounded on his Substack + proof points, clearly labelled as his AI), and emails the full thread to Gerald.
-4. Compress assets/gerald-teaching.jpg (~306KB → ~100KB); real client pull-quote when Gerald supplies one; company number in footer once the VCC Ltd → GVDP Ltd rename completes.
+1. Add `ANTHROPIC_API_KEY` and `RESEND_API_KEY` env vars in Vercel (see above). Resend test mode only delivers to the account owner's email — sign up with gerald@hey.com, or verify a sending domain.
+2. Attach ai.geraldvdp.com in Vercel → Settings → Domains; DNS is Google Cloud DNS (ns-cloud-b*.googledomains.com) — add CNAME `ai` → `cname.vercel-dns.com` there.
+3. Real client pull-quote when Gerald supplies one; company number in footer once the VCC Ltd → GVDP Ltd rename completes.
 
 Approved proof points: Brixton Brewery (part of Heineken), Levy Real Estate, Lambeth Council-funded programmes, Brixton BID, Stripe partnership, Loop (£5k first 10 days, built solo), ~£15k saved / ~5x traffic rebuilding his own sites.

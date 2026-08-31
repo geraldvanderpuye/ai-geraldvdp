@@ -5,11 +5,12 @@ This directory contains the complete static landing page for `ai.geraldvdp.com`.
 ## Source
 
 - `index.html` — the full site, including all HTML, CSS and JavaScript.
+- `api/ask.js` — Vercel serverless function behind the Ask Gerald form (Claude-drafted first answer + email to Gerald; see CLAUDE.md for env vars).
 - `assets/logo-horizontal.png` — masthead wordmark.
 - `assets/logo-square.png` — favicon and social preview mark.
 - `assets/gerald-teaching.jpg` — current workshop photograph.
 
-There is no framework or build step. Serve this directory as a static site.
+There is no framework or build step.
 
 ## Current positioning
 
@@ -24,22 +25,13 @@ Gerald's entrepreneurship teaching, go-to-market and customer-development work p
 
 ## Deployment
 
-Current Vercel URL: <https://ai-geraldvdp.vercel.app/>
+Current Vercel URL: <https://gvdp-site.vercel.app/>
 
-The directory is linked to the existing Vercel project. Deploy updates from this directory with:
+Push to `main` on GitHub — the Vercel project **gvdp-site** (Impact Brixton team) auto-deploys production; branches get preview URLs. Do not use `vercel deploy` from the CLI: the local `.vercel/` folder points at a superseded project.
 
-```sh
-vercel deploy . --prod --yes --archive=tgz
-```
-
-The custom domain `ai.geraldvdp.com` has not been connected.
+The custom domain `ai.geraldvdp.com` has not been connected yet.
 
 ## Remaining placeholders
-
-Before connecting the custom domain, replace both placeholders in `index.html`:
-
-- `[FORM_ENDPOINT]` — the Formspree, Tally or equivalent form endpoint.
-- `[EMAIL_ADDRESS]` — Gerald's fallback contact email.
 
 The photography blocks are intentionally labelled placeholders for the planned shoot.
 
