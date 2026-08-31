@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Gerald Vanderpuye — AI, from good to great</title>
-    <meta name="description" content="I help founders think AI-native about what they build, how they take it to market and where growth comes from.">
+    <meta name="description" content="I help businesses think AI-native about what they build, how they take it to market and where growth comes from.">
     <meta name="theme-color" content="#f2ecdf">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.gvdp.co.uk/">
@@ -240,6 +240,89 @@
         color: var(--paper);
         padding: clamp(6rem, 15vw, 13rem) 4vw;
       }
+      .partner {
+        width: min(92vw, 1240px);
+        margin: 0 auto;
+        padding: clamp(4rem, 8vw, 7rem) 0 0;
+      }
+      .partner .eyebrow { margin-bottom: 1.1rem; }
+      .partner-placeholder {
+        min-height: 9rem;
+        padding: 1.25rem;
+        background: #d4bfa7;
+        display: flex;
+        align-items: flex-end;
+        color: #42382f;
+      }
+      .partner-placeholder span {
+        max-width: 32rem;
+        font-size: .68rem;
+        font-weight: 800;
+        letter-spacing: .13em;
+        line-height: 1.5;
+        text-transform: uppercase;
+      }
+      .newsletter {
+        background: var(--paper-deep);
+        padding: clamp(5rem, 11vw, 9rem) 4vw;
+      }
+      .newsletter-inner { width: min(100%, 1240px); margin: 0 auto; display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(2rem, 8vw, 9rem); }
+      .newsletter h2 {
+        margin: 0;
+        font-family: var(--serif);
+        font-size: clamp(3rem, 6vw, 6rem);
+        font-weight: 500;
+        letter-spacing: -.06em;
+        line-height: .92;
+      }
+      .newsletter-copy { max-width: 42rem; }
+      .newsletter-copy > p { margin: 0 0 1.6rem; font-size: clamp(1.08rem, 1.45vw, 1.35rem); }
+      .newsletter-form { display: flex; gap: 1rem; flex-wrap: wrap; align-items: stretch; }
+      .newsletter-form input {
+        flex: 1 1 16rem;
+        padding: .85rem .2rem;
+        border: 0;
+        border-bottom: 1px solid var(--ink);
+        background: transparent;
+        color: var(--ink);
+        font: inherit;
+      }
+      .newsletter-form input::placeholder { color: #756d64; opacity: 1; }
+      .newsletter-form input:focus { outline: 0; border-bottom-color: var(--orange); box-shadow: 0 2px 0 var(--orange); }
+      .newsletter-note { margin: 1rem 0 0 !important; color: var(--muted); font-size: .8rem !important; }
+      .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        white-space: nowrap;
+        border: 0;
+      }
+      .topic-toggle {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        display: flex;
+        gap: 1.6rem;
+        flex-wrap: wrap;
+      }
+      .topic-toggle label { cursor: pointer; }
+      .topic-toggle input { position: absolute; opacity: 0; }
+      .topic-toggle span {
+        display: inline-block;
+        padding-bottom: .35rem;
+        border-bottom: 2px solid transparent;
+        font-size: .68rem;
+        font-weight: 800;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .topic-toggle input:checked + span { color: var(--ink); border-bottom-color: var(--orange); }
+      .topic-toggle input:focus-visible + span { outline: 3px solid var(--orange); outline-offset: 5px; }
       .equity blockquote {
         max-width: 1220px;
         margin: 0 auto;
@@ -357,6 +440,7 @@
         .photo-placeholder { min-height: 18rem; aspect-ratio: auto; }
         .evidence-inner,
         .offerings-intro,
+        .newsletter-inner,
         .question-inner { grid-template-columns: 1fr; }
         .offering { grid-template-columns: 1fr; gap: .9rem; }
         .site-footer { flex-direction: column; }
@@ -387,14 +471,14 @@
         </figure>
         <div class="intro-copy">
           <p class="eyebrow">AI-native · Go-to-market · Growth</p>
-          <h2 id="intro-title">I help founders think AI-native.</h2>
-          <p>I’m Gerald Vanderpuye. I work with founders to rethink what they build, how they take it to market and where growth can come from.</p>
+          <h2 id="intro-title">I help businesses think AI-native.</h2>
+          <p>I’m Gerald Vanderpuye. I work with businesses to rethink what they build, how they take it to market and where growth can come from.</p>
           <p>I’ve taught entrepreneurship — particularly go-to-market and customer development — to more than 1,000 companies across government programmes, universities and startups.</p>
           <p>That teaching is grounded in 15 years inside tech. I studied computer science, worked in cloud computing at Rackspace, helped build the partnership with Google and worked on go-to-market for GCP and machine learning.</p>
           <p>I’ve also supported machine-learning software companies with their go-to-market, and launched Birec — an enterprise SaaS platform.</p>
           <p>The point is not to add AI at the end. It is to connect what AI makes possible with what customers need and how the business grows.</p>
           <p class="personal-aside">Away from the main work, I own a coworking space and a distillery in Brixton. I’m a hobbyist distiller too. We brought the area together to make the first Brixton Culture Capital rum.</p>
-          <a class="quiet-link" href="https://geraldvdp.com">I write about it honestly at geraldvdp.com →</a>
+          <a class="quiet-link" href="https://www.geraldvdp.com">I write about it honestly at geraldvdp.com →</a>
         </div>
       </section>
 
@@ -442,15 +526,15 @@
       </section>
 
       <section class="story reveal" aria-labelledby="story-three-title">
-        <p class="eyebrow">03 — A different founder</p>
+        <p class="eyebrow">03 — Proof, not theory</p>
         <div class="story-grid">
-          <h2 id="story-three-title">The software customer became the builder.</h2>
+          <h2 id="story-three-title">I replaced 12 tools with one CRM.</h2>
           <div class="story-body">
-            <p>I reached a point where I was still paying for software I could now build myself.</p>
-            <p>So I built Loop — an AI follow-up tool for membership businesses. I built it solo. It made £5k in its first 10 days and now replaces large parts of my own software stack.</p>
-            <p>Rebuilding my own websites saved me roughly £15k and brought about five times the traffic. The important change wasn’t speed. It was becoming capable of making exactly what the business needed.</p>
+            <p>Fifteen years selling, and I’ve used every CRM in the business. Loop is the first one I know actually adds value — because we built it from the ground up, with Claude and other AI models at its heart, alongside the four businesses that have run on it for the last four months.</p>
+            <p>It replaced the 12 software tools I used to pay for. It watches the signals a business already produces, notices which customers need attention today, and drafts the personal message you’d send if you had the time.</p>
+            <p>If your business has repeat customers — members, subscribers, regulars — Loop starts from free.</p>
             <p><strong>I don’t just teach this. I build with it.</strong></p>
-            <a class="source-link" href="https://useloop.uk" target="_blank" rel="noopener">See Loop ↗</a>
+            <a class="source-link" id="loop-cta" href="#question">Get Loop — start free →</a>
           </div>
         </div>
         <div class="photo-placeholder photo-placeholder--hands" role="img" aria-label="Placeholder for a close-up documentary photograph of Gerald building on a laptop">
@@ -470,6 +554,7 @@
           </div>
           <div class="evidence-copy">
             <p>People often arrive asking which AI tool they should use. The better question usually appears later: what could this let the business do that it cannot do today?</p>
+            <p>For the first time, small teams can build companies worth hundreds of millions. That changes what a business should even attempt.</p>
             <p>My work brings three questions together: what can AI make possible, what do customers actually need, and how does the business take it to market and grow?</p>
             <p>That is what I work on in the Think AI-Native series — live, streamed online and inside companies.</p>
             <p class="client-line">Experience across Rackspace, GCP and machine learning. Workshops and programmes delivered for Brixton Brewery, part of Heineken · Levy Real Estate · Lambeth Council-funded programmes · Brixton BID · small businesses · community AI events in partnership with Stripe.</p>
@@ -480,8 +565,15 @@
         </div>
       </section>
 
-      <section class="equity reveal" aria-label="Gerald Vanderpuye quote about access to AI">
-        <blockquote>This cannot belong only to Silicon Valley, Shoreditch, or the companies already closest to the money.</blockquote>
+      <section class="equity reveal" aria-label="Gerald Vanderpuye quote about democratized intelligence">
+        <blockquote>Intelligence has been democratized. This is the moment we’ll all remember — the question is what you did with it.</blockquote>
+      </section>
+
+      <section class="partner reveal" aria-labelledby="partner-title">
+        <p class="eyebrow" id="partner-title">Partnership</p>
+        <div class="partner-placeholder" role="img" aria-label="Placeholder for the Stripe partnership announcement">
+          <span>Stripe partnership — placeholder until the official mark and wording land.</span>
+        </div>
       </section>
 
       <section class="offerings reveal" aria-labelledby="offerings-title">
@@ -493,7 +585,7 @@
         <dl class="offering-list">
           <div class="offering">
             <dt>Live, in London.</dt>
-            <dd>Think AI-Native workshops for founders, hosted at my coworking space — built around real work and real questions.</dd>
+            <dd>Think AI-Native workshops, hosted at <a href="https://impactbrixton.com" target="_blank" rel="noopener">Impact Brixton</a> — my coworking space — built around real work and real questions.</dd>
           </div>
           <div class="offering">
             <dt>Streamed anywhere.</dt>
@@ -506,19 +598,42 @@
         </dl>
       </section>
 
+      <section class="newsletter reveal" id="letter" aria-labelledby="newsletter-title">
+        <div class="newsletter-inner">
+          <div>
+            <p class="eyebrow">The letter</p>
+            <h2 id="newsletter-title">One small win a week.</h2>
+          </div>
+          <div class="newsletter-copy">
+            <p>Every week I share one small win a real business got from AI — what they did, what it cost, what changed. The news that matters, with the hype removed. That’s the whole letter.</p>
+            <form class="newsletter-form" action="https://www.geraldvdp.com/subscribe" method="get" target="_blank" rel="noopener">
+              <label class="visually-hidden" for="newsletter-email">Email</label>
+              <input id="newsletter-email" name="email" type="email" autocomplete="email" placeholder="you@yourbusiness.com" required>
+              <button class="submit-button" type="submit">Subscribe</button>
+            </form>
+            <p class="newsletter-note">One click to confirm on my Substack, and you’re in.</p>
+          </div>
+        </div>
+      </section>
+
       <section class="question reveal" id="question" aria-labelledby="question-title">
         <div class="question-inner">
           <div class="question-intro">
             <p class="eyebrow">Start somewhere useful</p>
             <h2 id="question-title">Ask me a question.</h2>
             <p>Whatever you’re wondering about AI and your business — ask. I read every one and I answer personally.</p>
-            <a class="letter-link" href="https://geraldvdp.com">Not ready to ask? Read the letter →</a>
+            <a class="letter-link" href="https://www.geraldvdp.com">Not ready to ask? Read the letter →</a>
           </div>
           <form action="/api/ask" method="post" id="question-form">
             <div class="field-hp" aria-hidden="true">
               <label for="website">Leave this field empty</label>
               <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
             </div>
+            <fieldset class="topic-toggle">
+              <legend class="visually-hidden">What is this about?</legend>
+              <label><input type="radio" name="topic" value="question" checked><span>I have a question</span></label>
+              <label><input type="radio" name="topic" value="loop"><span>I want Loop access</span></label>
+            </fieldset>
             <div class="field">
               <label for="name">Name</label>
               <input id="name" name="name" type="text" autocomplete="name" required>
@@ -570,6 +685,14 @@
       const formStatus = document.getElementById("form-status");
       const submitButton = questionForm.querySelector(".submit-button");
 
+      const loopCta = document.getElementById("loop-cta");
+      if (loopCta) {
+        loopCta.addEventListener("click", () => {
+          const loopRadio = questionForm.querySelector('input[name="topic"][value="loop"]');
+          if (loopRadio) loopRadio.checked = true;
+        });
+      }
+
       function showFirstAnswer(answer) {
         const block = document.createElement("div");
         block.className = "first-answer";
@@ -598,8 +721,10 @@
           });
           const result = await response.json().catch(() => null);
           if (!response.ok || !result || !result.ok) throw new Error("send failed");
-          questionForm.querySelectorAll(".field, .submit-row").forEach((el) => { el.hidden = true; });
-          formStatus.textContent = "Got it. Your question is on its way to my inbox — I'll reply to " + data.email + " personally.";
+          questionForm.querySelectorAll(".field, .submit-row, .topic-toggle").forEach((el) => { el.hidden = true; });
+          formStatus.textContent = data.topic === "loop"
+            ? "Got it. Your Loop request is on its way to my inbox — I'll set you up and reply to " + data.email + " personally."
+            : "Got it. Your question is on its way to my inbox — I'll reply to " + data.email + " personally.";
           if (result.answer) showFirstAnswer(result.answer);
         } catch (error) {
           submitButton.disabled = false;
