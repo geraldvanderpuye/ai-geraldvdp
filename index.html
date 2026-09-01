@@ -714,8 +714,8 @@
         <div class="question-inner">
           <div class="question-intro">
             <p class="eyebrow">Start somewhere useful</p>
-            <h2 id="question-title">Ask me a question.</h2>
-            <p>Whatever you’re wondering about AI and your business — ask. I read every one and I answer personally.</p>
+            <h2 id="question-title">Find out more.</h2>
+            <p>Tell me where your business is with AI — I read every message and reply personally.</p>
             <a class="letter-link" href="https://www.geraldvdp.com/subscribe" target="_blank" rel="noopener">Not ready to ask? One small win a week — subscribe to the letter →</a>
           </div>
           <form action="/api/ask" method="post" id="question-form">
@@ -723,12 +723,7 @@
               <label for="website">Leave this field empty</label>
               <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
             </div>
-            <fieldset class="topic-toggle">
-              <legend class="visually-hidden">What is this about?</legend>
-              <label><input type="radio" name="topic" value="question" checked><span>I have a question</span></label>
-              <label><input type="radio" name="topic" value="workshop"><span>Book a session</span></label>
-              <label><input type="radio" name="topic" value="loop"><span>I want Loop access</span></label>
-            </fieldset>
+            <input type="hidden" name="topic" value="question" id="topic-field">
             <div class="field">
               <label for="name">Name</label>
               <input id="name" name="name" type="text" autocomplete="name" required>
@@ -742,7 +737,7 @@
               <input id="company" name="company" type="text" autocomplete="organization">
             </div>
             <div class="field">
-              <label for="message">Your question</label>
+              <label for="message">Your message</label>
               <textarea id="message" name="message" placeholder="What are you trying to work out?" required></textarea>
             </div>
             <div class="submit-row">
@@ -781,8 +776,8 @@
       const submitButton = questionForm.querySelector(".submit-button");
 
       function selectTopic(topic) {
-        const radio = questionForm.querySelector('input[name="topic"][value="' + topic + '"]');
-        if (radio) radio.checked = true;
+        const field = document.getElementById("topic-field");
+        if (field) field.value = topic;
       }
       document.querySelectorAll("a[data-topic]").forEach((link) => {
         link.addEventListener("click", () => selectTopic(link.dataset.topic));
