@@ -703,16 +703,16 @@
 
       <section class="diagnostic reveal" id="ai-test" aria-labelledby="diagnostic-heading">
         <p class="eyebrow">The 60-second AI test</p>
-        <h2 id="diagnostic-heading">Is AI helping your business write—or changing how it works?</h2>
-        <p id="diagnostic-title" class="diagnostic-intro">Six questions. No jargon. See whether your AI can only create, can see the business, can do the work—or is changing what the business can become.</p>
+        <h2 id="diagnostic-heading">Is AI changing your business — or just helping people in it?</h2>
+        <p id="diagnostic-title" class="diagnostic-intro">Seven questions. No jargon. The test scores the whole business, not your keenest employee — individuals experiment, the organisation adopts, workflows transform, the business changes.</p>
         <div id="test-static">
           <ul class="diagnostic-list">
-            <li><strong>Write</strong> — AI creates content. A person still carries the work.</li>
-            <li><strong>Connect</strong> — AI can see the business through its existing systems.</li>
-            <li><strong>Act</strong> — agents complete work within boundaries set by people.</li>
-            <li><strong>Become</strong> — AI changes the product, customer promise or business model.</li>
+            <li><strong>Individual experimentation</strong> — individuals use AI, but the business has not adopted it.</li>
+            <li><strong>Organisational adoption</strong> — AI use has breadth, intention and repetition.</li>
+            <li><strong>Workflow transformation</strong> — AI completes defined work and the business measures the outcome.</li>
+            <li><strong>Business reinvention</strong> — AI changes the proposition, customer value, delivery model or economics.</li>
           </ul>
-          <p class="diagnostic-closer">Four stages. Most businesses are still at the first. <a href="#question">Ask me where yours sits →</a></p>
+          <p class="diagnostic-closer">Four levels. Most businesses are still at the first. <a href="#question">Ask me where yours sits →</a></p>
         </div>
         <div class="ai-test" id="test-app" hidden></div>
       </section>
@@ -896,119 +896,185 @@
         const app = document.getElementById("test-app");
         if (!staticBlock || !app) return;
 
-        // Placeholder destinations — the three articles are not written yet. Swap in real URLs when they exist.
-        const LEVEL_ONE_ARTICLE_URL = "#";   // "Connecting your existing systems with an AI brain"
-        const LEVEL_TWO_ARTICLE_URL = "#";   // "Developing agents to work for you"
-        const LEVEL_THREE_ARTICLE_URL = "#"; // "Five companies that became completely AI-native"
+        // Placeholder destinations — the three transition pieces are not written yet. Swap in real URLs when they exist.
+        const ARTICLE_ADOPTION_URL = "#";    // "From individual use to organisational adoption"
+        const ARTICLE_WORKFLOW_URL = "#";    // "From adoption to transformed workflows"
+        const ARTICLE_REINVENTION_URL = "#"; // "From transformed workflows to reinvention: five businesses"
 
         const QUESTIONS = [
           {
-            question: "Today, what does AI mostly do in your business?",
+            question: "How widely is AI used in your business?",
             answers: [
-              "Writes, summarises or creates content",
-              "Uses information from our files or business tools",
-              "Completes tasks across tools, with our approval",
-              "Powers something we could not offer before",
+              "It is not used regularly.",
+              "One or two people use it on their own initiative.",
+              "It is used across several core functions, or by most of our small team.",
+              "It is used across most of the business.",
             ],
-            strength: "Your strongest signal is day-to-day use: AI is already doing more than writing in your business.",
-            constraint: "The constraint is day-to-day use: AI still mostly writes, while the real work happens elsewhere.",
           },
           {
-            question: "How does AI get the information it needs?",
+            question: "Who has decided how AI should be used?",
             answers: [
-              "We paste it into a chat each time",
-              "It is connected to at least one system or knowledge source",
-              "An agent finds the right context and keeps track of the job",
-              "The system learns from every interaction and outcome",
+              "Nobody. Individuals make their own choices.",
+              "Leaders encourage it, but there is no common approach.",
+              "The business has chosen priority uses, approved tools, an owner and basic boundaries.",
+              "AI priorities are part of our operating plan and investment decisions.",
             ],
-            strength: "Your strongest signal is context: AI can reach the information it needs without being spoon-fed.",
-            constraint: "The constraint is context: someone still pastes the business into a chat window every time.",
           },
           {
-            question: "What happens after AI gives you an answer?",
+            question: "How consistently is AI used for the same work?",
             answers: [
-              "A person copies it into the next tool",
-              "It can update one connected system",
-              "It completes several steps, pausing when approval is needed",
-              "It acts within clear limits and sends exceptions to a person",
+              "Rarely or experimentally.",
+              "Regularly, but everyone has their own approach.",
+              "Through shared, repeatable ways of working.",
+              "It is essential to how we operate every day.",
             ],
-            strength: "Your strongest signal is action: answers turn into completed steps without a person carrying them.",
-            constraint: "The constraint is action: a person still has to carry the answer into the next system.",
           },
           {
-            question: "Where does AI create the clearest value for your customer?",
+            question: "What happens after AI produces an answer or recommendation?",
             answers: [
-              "Faster content and replies",
-              "A more personal experience using customer information",
-              "It notices what a customer needs and helps us act first",
-              "It makes a new product, service or promise possible",
+              "A person carries all the work into the next step.",
+              "AI suggests the next action, but a person completes it.",
+              "AI completes defined steps and asks for approval at agreed points.",
+              "AI runs the workflow and routes exceptions to a person.",
             ],
-            strength: "Your strongest signal is customer value: AI is already helping you anticipate what people need.",
-            constraint: "The constraint is customer value: customers mostly feel AI as faster content, not a better offer.",
           },
           {
-            question: "How do you know the AI is working?",
+            question: "What keeps AI-enabled work within safe limits?",
             answers: [
-              "The output looks good or saves a little time",
-              "We track time or cost in a specific workflow",
-              "We measure a customer, quality or revenue outcome",
-              "Those outcomes improve the next decision automatically",
+              "We have no shared rules or controls.",
+              "People review outputs using their own judgement.",
+              "We have approved data and tools, a named owner, clear approvals and a fallback.",
+              "Work is logged, monitored and improved when something goes wrong.",
             ],
-            strength: "Your strongest signal is evidence: you measure what AI changes, not just what it produces.",
-            constraint: "The constraint is evidence: nothing yet tells you what the AI is actually worth.",
           },
           {
-            question: "If AI disappeared tomorrow, what would happen?",
+            question: "How do you know AI is creating value?",
             answers: [
-              "Writing and office work would be slower",
-              "Manual handoffs between our systems would return",
-              "Important day-to-day operations would stop",
-              "Our core product or business model would no longer work",
+              "It feels useful or the output looks good.",
+              "We sometimes estimate time or cost saved.",
+              "We track agreed measures such as time, cost, quality, customer outcomes or revenue.",
+              "The measured outcomes determine how the workflow or investment changes.",
             ],
-            strength: "Your strongest signal is dependence: AI is already load-bearing in how the business runs.",
-            constraint: "The constraint is dependence: if AI vanished tomorrow, you would lose some speed but nothing structural.",
+          },
+          {
+            question: "What has AI changed about the business?",
+            answers: [
+              "It makes some individual tasks faster.",
+              "It helps the existing team do more.",
+              "It has changed major workflows or how we deliver the existing service.",
+              "It has changed our product, customer promise, delivery economics or strategic direction.",
+            ],
           },
         ];
 
-        const STAGES = ["Write", "Connect", "Act", "Become"];
+        const STAGES = ["Experiment", "Adopt", "Transform", "Reinvent"];
 
         const LEVELS = [
           {
-            heading: "Level 0 — AI writes. You carry the work.",
-            truth: "You are getting useful output, but AI still begins and ends in a chat window. The business around it has not changed yet.",
-            shift: "Write → Connect",
-            action: "Choose one task you repeat every week. Connect AI to the file, inbox or system that holds the context, so nobody has to paste it in again.",
-            cta: "Connect your existing systems with an AI brain →",
-            url: LEVEL_ONE_ARTICLE_URL,
+            heading: "Level 0 — Individual experimentation.",
+            truth: "People in your business use AI. The business hasn’t adopted it — however good one person’s setup is, the company still works the way it always did.",
+            url: ARTICLE_ADOPTION_URL,
           },
           {
-            heading: "Level 1 — AI can see the business.",
-            truth: "Your systems are beginning to share context with AI. People still move most of the work from insight to action.",
-            shift: "Connect → Act",
-            action: "Pick one workflow with a clear trigger and finish line. Let an agent collect the context, prepare the action and pause for approval.",
-            cta: "Develop agents that work for you →",
-            url: LEVEL_TWO_ARTICLE_URL,
+            heading: "Level 1 — Organisational adoption.",
+            truth: "AI use in your business has breadth, intention and repetition. The next step is letting it complete work — not just suggest it.",
+            url: ARTICLE_WORKFLOW_URL,
           },
           {
-            heading: "Level 2 — AI does useful work.",
-            truth: "Agents are completing real tasks inside clear boundaries. The next opportunity is not more automation. It is a different customer promise.",
-            shift: "Act → Become",
-            action: "Ask what you could now deliver in ten minutes that used to take ten days—and whether that should become the product.",
-            cta: "See five companies that became completely AI-native →",
-            url: LEVEL_THREE_ARTICLE_URL,
+            heading: "Level 2 — Workflow transformation.",
+            truth: "AI completes defined work inside boundaries you set, and you measure the outcome. That’s a better version of your existing business — Level 3 is a different business.",
+            url: ARTICLE_REINVENTION_URL,
           },
           {
-            heading: "Level 3 — AI changes what the business can be.",
-            truth: "AI is part of the product or operating model, not an add-on. Your edge now depends on judgement, feedback and what your system learns that competitors cannot copy.",
-            shift: "Become → Compound",
-            action: "Find the most important decision your system makes. Capture the outcome and use it to improve the next decision.",
-            cta: "Compare your model with five AI-native companies →",
-            url: LEVEL_THREE_ARTICLE_URL,
+            heading: "Level 3 — Business reinvention.",
+            truth: "AI has changed what you sell, how customers receive value, or the economics of delivering it. Your edge now compounds: judgement, feedback and what your system learns.",
+            url: ARTICLE_REINVENTION_URL,
           },
         ];
 
+        // One entry per question, in question order: how the missing gate reads, and what to do about it.
+        const GATES = [
+          {
+            shift: "Experiment → Adopt",
+            gate: "AI hasn’t spread — it lives with one or two people, not across your core functions.",
+            action: "Pick the two or three functions where AI would earn its keep, and get the people who run them using it on real work.",
+          },
+          {
+            shift: "Experiment → Adopt",
+            gate: "Nobody has decided how AI should be used — no chosen priorities, no owner, no boundaries.",
+            action: "Write the one-pager: priority uses, approved tools, who owns it, and the basic rules.",
+          },
+          {
+            shift: "Experiment → Adopt",
+            gate: "AI use is still ad hoc — everyone has their own approach, nothing is shared or repeatable.",
+            action: "Take one recurring job and agree a shared way of doing it with AI — same way, every time, everyone.",
+          },
+          {
+            shift: "Adopt → Transform",
+            gate: "AI still only suggests. A person carries every step to done.",
+            action: "Choose one workflow with a clear trigger and finish line. Let AI complete the defined steps and pause for your approval.",
+          },
+          {
+            shift: "Adopt → Transform",
+            gate: "There are no agreed limits — no approvals, no named owner, no fallback — so nothing can be safely delegated.",
+            action: "Set the rules before you delegate more: approved data and tools, an owner, clear approvals, and what happens when something looks wrong.",
+          },
+          {
+            shift: "Adopt → Transform",
+            gate: "Nothing is measured, so nobody can say what AI is actually worth.",
+            action: "Agree the one number this workflow should move — time, cost, quality or revenue — and start tracking it this week.",
+          },
+          {
+            shift: "Transform → Reinvent",
+            gate: "Everything AI has changed so far is internal. The thing your customer buys is still the same thing.",
+            action: "Ask what you could now promise a customer that was impossible before — and whether that should become the product.",
+          },
+        ];
+
+        const COMPOUND = {
+          shift: "Reinvent → Compound",
+          gate: null,
+          action: "Find the most important decision your system makes. Capture the outcome and feed it back, so next quarter’s version beats today’s.",
+        };
+
+        const POCKETS = [
+          null, null, null,
+          "somewhere in the business, AI already completes defined work",
+          "part of the business already runs AI inside proper boundaries",
+          "one workflow is already properly measured",
+          "one corner of the business is already changing what it delivers",
+        ];
+
+        // Gates, not points: the highest level for which every required condition holds.
+        function classify() {
+          const adopted = answers[0] >= 2 && answers[1] >= 2 && answers[2] >= 2;
+          const transformed = adopted && answers[3] >= 2 && answers[4] >= 2 && answers[5] >= 2;
+          const reinvented = transformed && answers[6] === 3;
+          return reinvented ? 3 : transformed ? 2 : adopted ? 1 : 0;
+        }
+
+        function nextMove(level) {
+          if (level === 3) return COMPOUND;
+          const range = level === 0 ? [0, 1, 2] : level === 1 ? [3, 4, 5] : [6];
+          for (const i of range) {
+            if (level === 2 || answers[i] < 2) return GATES[i];
+          }
+          return GATES[range[0]];
+        }
+
+        function pocket(level) {
+          if (level >= 2) return null;
+          let best = -1;
+          let bestScore = 1;
+          for (let i = 3; i <= 6; i += 1) {
+            if (answers[i] >= 2 && answers[i] >= bestScore) { best = i; bestScore = answers[i]; }
+          }
+          if (best === -1) return null;
+          return "One pocket is running ahead: " + POCKETS[best] + ". That capability is real — but the company’s level is set by the foundations still missing.";
+        }
+
         const ACK_MS = 180;
-        let answers = [null, null, null, null, null, null];
+        let answers = QUESTIONS.map(() => null);
         let advanceTimer = null;
 
         staticBlock.hidden = true;
@@ -1020,24 +1086,6 @@
           if (className) node.className = className;
           if (text) node.textContent = text;
           return node;
-        }
-
-        function classify() {
-          const total = answers.reduce((sum, value) => sum + value, 0);
-          let level = total <= 4 ? 0 : total <= 9 ? 1 : total <= 14 ? 2 : 3;
-          // Guardrail 1: sophisticated output is not agentic if a person still carries every step.
-          if (level > 1 && answers[2] < 2) level = 1;
-          // Guardrail 2: AI-native means the customer offer or operating model has changed.
-          if (level === 3 && !(answers[3] === 3 && answers[5] >= 2)) level = 2;
-          return level;
-        }
-
-        function evidence() {
-          const hi = Math.max.apply(null, answers);
-          const lo = Math.min.apply(null, answers);
-          const hiIdx = answers[3] === hi ? 3 : answers.indexOf(hi);
-          const loIdx = answers[2] === lo ? 2 : answers.indexOf(lo);
-          return QUESTIONS[hiIdx].strength + " " + QUESTIONS[loIdx].constraint;
         }
 
         function showStart() {
@@ -1054,10 +1102,10 @@
 
           const track = make("div", "test-track");
           const fill = make("span");
-          fill.style.width = ((i / 6) * 100) + "%";
+          fill.style.width = ((i / QUESTIONS.length) * 100) + "%";
           track.appendChild(fill);
           app.appendChild(track);
-          app.appendChild(make("p", "test-progress", "Question " + (i + 1) + " of 6"));
+          app.appendChild(make("p", "test-progress", "Question " + (i + 1) + " of " + QUESTIONS.length));
 
           const q = QUESTIONS[i];
           const fieldset = make("fieldset", "test-fieldset");
@@ -1072,11 +1120,11 @@
             if (answers[i] === score) input.checked = true;
             input.addEventListener("change", () => {
               answers[i] = score;
-              fill.style.width = (((i + 1) / 6) * 100) + "%";
+              fill.style.width = (((i + 1) / QUESTIONS.length) * 100) + "%";
               if (advanceTimer) clearTimeout(advanceTimer);
               advanceTimer = window.setTimeout(() => {
                 advanceTimer = null;
-                if (i < 5) { showQuestion(i + 1); } else { showResult(); }
+                if (i < QUESTIONS.length - 1) { showQuestion(i + 1); } else { showResult(); }
               }, ACK_MS);
             });
             label.appendChild(input);
@@ -1114,15 +1162,23 @@
           result.appendChild(ladder);
 
           result.appendChild(make("p", "", r.truth));
+
+          const move = nextMove(level);
           result.appendChild(make("p", "test-label", "The shift to make next"));
           const shiftP = make("p", "");
-          shiftP.appendChild(make("strong", "", r.shift));
+          shiftP.appendChild(make("strong", "", move.shift));
+          if (move.gate) {
+            shiftP.appendChild(document.createTextNode(" — " + move.gate));
+          }
           result.appendChild(shiftP);
           result.appendChild(make("p", "test-label", "This week"));
-          result.appendChild(make("p", "", r.action));
+          result.appendChild(make("p", "", move.action));
 
-          result.appendChild(make("p", "test-label", "What your answers say"));
-          result.appendChild(make("p", "", evidence()));
+          const pocketText = pocket(level);
+          if (pocketText) {
+            result.appendChild(make("p", "test-label", "A pocket running ahead"));
+            result.appendChild(make("p", "", pocketText));
+          }
 
           result.appendChild(make("p", "test-label", "Get the full report"));
           result.appendChild(make("p", "", "Enter your email and I’ll send you the full report — the three stages of building, and the one I’d read first at your level. It comes from me, personally."));
@@ -1173,7 +1229,7 @@
           const retake = make("button", "test-retake", "Take it again");
           retake.type = "button";
           retake.addEventListener("click", () => {
-            answers = [null, null, null, null, null, null];
+            answers = QUESTIONS.map(() => null);
             showQuestion(0);
           });
           result.appendChild(retake);

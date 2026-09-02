@@ -4,6 +4,8 @@ Editorial landing page for Gerald Vanderpuye's AI consultancy (brand: Gerald; co
 
 ## Handover to Claude — rebuild the AI test
 
+> **Implemented 2026-09-02.** The test now follows `AI-READINESS-WORKING-MEMO.md`: seven questions verbatim, gate-based classification (no points score), whole-company scoring, higher-level pockets named separately without raising the level, and the first missing gate rendered as the next move. Public level names: Individual experimentation / Organisational adoption / Workflow transformation / Business reinvention; ladder Experiment—Adopt—Transform—Reinvent. Result stays an email capture for the report. Article placeholders renamed `ARTICLE_ADOPTION/WORKFLOW/REINVENTION_URL` (still `#`, matching the memo's three transition pieces). `AI-TEST-CLAUDE-BRIEF.md` and the section below describe the OLD six-question model — historical only.
+
 Gerald wants the current five-question yes/no AI test replaced with a much stronger 60-second assessment. Your next task is to implement it in `index.html` using the complete specification in `AI-TEST-CLAUDE-BRIEF.md`.
 
 The brief was produced after walking through GenAIPI's full AI Readiness Assessment, including its 24 questions, eight departments, score preview and lead-capture gate. Borrow the useful interaction principles—clear progress, behaviour-based answer choices, a named maturity result and one prioritised next action—but do not copy its wording, visuals, percentage score, 24-question length or mandatory contact gate.
