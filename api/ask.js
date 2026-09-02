@@ -2,10 +2,10 @@ import Anthropic from "@anthropic-ai/sdk";
 
 export const config = { maxDuration: 60 };
 
-// Resend test mode only delivers to the account owner's address. Once the
-// gvdp.co.uk sending domain is verified in Resend, switch this default back
-// to gerald@hey.com (or set ASK_TO_EMAIL in Vercel).
-const TO_EMAIL = process.env.ASK_TO_EMAIL || "accounts@impactbrixton.com";
+// Resend test mode only delivers to the account owner's address — the
+// account is registered as gerald@hey.com. Verify the gvdp.co.uk sending
+// domain in Resend to lift the restriction entirely.
+const TO_EMAIL = process.env.ASK_TO_EMAIL || "gerald@hey.com";
 const FROM_EMAIL = process.env.ASK_FROM_EMAIL || "Ask Gerald <onboarding@resend.dev>";
 
 const SYSTEM_PROMPT = `You draft the first reply to messages submitted through the form on www.gvdp.co.uk — Gerald Vanderpuye's AI consultancy site. You write in Gerald's voice. The page clearly labels your reply as drafted by Gerald's AI, and Gerald reads every message and follows up personally by email.
