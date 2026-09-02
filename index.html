@@ -192,9 +192,103 @@
       .diagnostic-closer { max-width: 41rem; margin: 0; font-size: clamp(1.08rem, 1.4vw, 1.32rem); }
       .ai-test {
         max-width: 52rem;
-        background: var(--paper-deep);
-        border-left: 3px solid var(--orange);
-        padding: clamp(1.6rem, 3vw, 2.4rem);
+        border-top: 1px solid var(--ink);
+        border-bottom: 1px solid var(--ink);
+        padding: clamp(1.6rem, 3vw, 2.4rem) 0;
+      }
+      .test-track {
+        height: 3px;
+        background: var(--line);
+        margin: 0 0 1.4rem;
+      }
+      .test-track span {
+        display: block;
+        height: 100%;
+        width: 0;
+        background: var(--orange);
+        transition: width .25s ease;
+      }
+      .test-fieldset { margin: 0; padding: 0; border: 0; min-inline-size: 0; }
+      legend.test-statement { padding: 0; }
+      .test-answers { border-top: 1px solid var(--line); }
+      .test-answer {
+        position: relative;
+        display: block;
+        border-bottom: 1px solid var(--line);
+        cursor: pointer;
+      }
+      .test-answer input {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+      }
+      .test-answer > span {
+        display: block;
+        padding: 1rem 0;
+        font-size: clamp(1rem, 1.3vw, 1.15rem);
+        line-height: 1.4;
+        transition: transform .18s ease, color .18s ease;
+      }
+      .test-answer:hover, .test-answer:focus-within { border-bottom-color: var(--orange); }
+      .test-answer:hover > span, .test-answer:focus-within > span { transform: translateX(.4rem); }
+      .test-answer input:checked + span { color: var(--orange); transform: translateX(.4rem); }
+      .test-answer input:focus-visible + span { outline: 3px solid var(--orange); outline-offset: 4px; }
+      @media (prefers-reduced-motion: reduce) {
+        .test-track span, .test-answer > span { transition: none; }
+        .test-answer:hover > span, .test-answer:focus-within > span, .test-answer input:checked + span { transform: none; }
+      }
+      .test-back {
+        margin-top: 1.4rem;
+        border: 0;
+        padding: 0;
+        background: none;
+        color: var(--muted);
+        font: inherit;
+        font-size: .8rem;
+        text-decoration: underline;
+        text-underline-offset: .25em;
+        cursor: pointer;
+      }
+      .test-result h3 {
+        margin: .4rem 0 1.2rem;
+        font-family: var(--serif);
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        font-weight: 500;
+        letter-spacing: -.04em;
+        line-height: 1.02;
+      }
+      .stage-ladder {
+        margin: 0 0 1.8rem;
+        font-size: .72rem;
+        font-weight: 800;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .stage-ladder strong { color: var(--orange); }
+      .test-result p:not(.eyebrow):not(.stage-ladder):not(.test-label) {
+        max-width: 41rem;
+        margin: 0 0 1rem;
+        font-size: clamp(1.02rem, 1.3vw, 1.2rem);
+      }
+      .test-label {
+        margin: 1.8rem 0 .4rem;
+        font-size: .68rem;
+        font-weight: 800;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+      .test-cta {
+        display: inline-block;
+        margin-top: 1.4rem;
+        font-weight: 700;
+      }
+      .test-talk {
+        display: block;
+        margin-top: 1.1rem;
+        font-size: .9rem;
+        color: var(--muted);
       }
       .test-progress {
         margin: 0 0 1.4rem;
@@ -596,17 +690,19 @@
       </section>
 
       <section class="diagnostic reveal" id="ai-test" aria-labelledby="diagnostic-heading">
-        <p class="eyebrow">Here’s how you’d know</p>
-        <h2 id="diagnostic-heading">Take the AI test.</h2>
-        <p id="diagnostic-title" class="diagnostic-intro">If any of these sound familiar, you’re leaving the biggest value on the table:</p>
-        <ul class="diagnostic-list" id="diagnostic-list">
-          <li data-payoff="Connected to your files and folders, AI stops being a toy. Reading your contracts, drafts and spreadsheets is where the first real hours come back.">AI lives in a chat tab. It’s never touched your actual files and folders.</li>
-          <li data-payoff="MCP is how AI plugs into your tools. It’s the difference between asking about your work and having it done in your work.">Most people on the team don’t know what an MCP is — or why it matters.</li>
-          <li data-payoff="Each model is good at different jobs. One model for everything means premium prices for average answers.">You use one model for everything, instead of running agents across ChatGPT, Claude and Gemini.</li>
-          <li data-payoff="With context on how your business runs, AI answers like someone who works there. Generic in, generic out.">Everything you do with AI is generic. None of it knows how your business actually runs.</li>
-          <li data-payoff="Part of your software bill is now optional. I replaced 12 tools with one thing we built.">You still buy software for problems you could now have built exactly to fit.</li>
-        </ul>
-        <p class="diagnostic-closer" id="diagnostic-closer"><strong>None of this is advanced. It’s just the stuff nobody’s shown you yet. That’s what these sessions fix.</strong> <a href="#offerings">The sessions →</a></p>
+        <p class="eyebrow">The 60-second AI test</p>
+        <h2 id="diagnostic-heading">Is AI helping your business write—or changing how it works?</h2>
+        <p id="diagnostic-title" class="diagnostic-intro">Six questions. No jargon. See whether your AI can only create, can see the business, can do the work—or is changing what the business can become.</p>
+        <div id="test-static">
+          <ul class="diagnostic-list">
+            <li><strong>Write</strong> — AI creates content. A person still carries the work.</li>
+            <li><strong>Connect</strong> — AI can see the business through its existing systems.</li>
+            <li><strong>Act</strong> — agents complete work within boundaries set by people.</li>
+            <li><strong>Become</strong> — AI changes the product, customer promise or business model.</li>
+          </ul>
+          <p class="diagnostic-closer">Four stages. Most businesses are still at the first. <a href="#question">Ask me where yours sits →</a></p>
+        </div>
+        <div class="ai-test" id="test-app" hidden></div>
       </section>
 
       <section class="examples-lede reveal" aria-label="What AI-native means">
@@ -782,26 +878,130 @@
         link.addEventListener("click", () => selectTopic(link.dataset.topic));
       });
 
-      // The AI test — progressive enhancement over the static checklist.
+      // The 60-second AI test — progressive enhancement over the static stage list.
       (function () {
-        const list = document.getElementById("diagnostic-list");
-        const closer = document.getElementById("diagnostic-closer");
-        const intro = document.getElementById("diagnostic-title");
-        if (!list || !closer || !intro) return;
-        const items = Array.from(list.querySelectorAll("li")).map((li) => ({
-          statement: li.textContent,
-          payoff: li.dataset.payoff,
-        }));
-        const test = document.createElement("div");
-        test.className = "ai-test";
-        test.setAttribute("aria-live", "polite");
-        list.hidden = true;
-        closer.hidden = true;
-        intro.textContent = "The AI test: five statements, one at a time. Say which ones sound like your business.";
-        list.before(test);
+        const staticBlock = document.getElementById("test-static");
+        const app = document.getElementById("test-app");
+        if (!staticBlock || !app) return;
 
-        let index = 0;
-        let applies = [];
+        // Placeholder destinations — the three articles are not written yet. Swap in real URLs when they exist.
+        const LEVEL_ONE_ARTICLE_URL = "#";   // "Connecting your existing systems with an AI brain"
+        const LEVEL_TWO_ARTICLE_URL = "#";   // "Developing agents to work for you"
+        const LEVEL_THREE_ARTICLE_URL = "#"; // "Five companies that became completely AI-native"
+
+        const QUESTIONS = [
+          {
+            question: "Today, what does AI mostly do in your business?",
+            answers: [
+              "Writes, summarises or creates content",
+              "Uses information from our files or business tools",
+              "Completes tasks across tools, with our approval",
+              "Powers something we could not offer before",
+            ],
+            strength: "Your strongest signal is day-to-day use: AI is already doing more than writing in your business.",
+            constraint: "The constraint is day-to-day use: AI still mostly writes, while the real work happens elsewhere.",
+          },
+          {
+            question: "How does AI get the information it needs?",
+            answers: [
+              "We paste it into a chat each time",
+              "It is connected to at least one system or knowledge source",
+              "An agent finds the right context and keeps track of the job",
+              "The system learns from every interaction and outcome",
+            ],
+            strength: "Your strongest signal is context: AI can reach the information it needs without being spoon-fed.",
+            constraint: "The constraint is context: someone still pastes the business into a chat window every time.",
+          },
+          {
+            question: "What happens after AI gives you an answer?",
+            answers: [
+              "A person copies it into the next tool",
+              "It can update one connected system",
+              "It completes several steps, pausing when approval is needed",
+              "It acts within clear limits and sends exceptions to a person",
+            ],
+            strength: "Your strongest signal is action: answers turn into completed steps without a person carrying them.",
+            constraint: "The constraint is action: a person still has to carry the answer into the next system.",
+          },
+          {
+            question: "Where does AI create the clearest value for your customer?",
+            answers: [
+              "Faster content and replies",
+              "A more personal experience using customer information",
+              "It notices what a customer needs and helps us act first",
+              "It makes a new product, service or promise possible",
+            ],
+            strength: "Your strongest signal is customer value: AI is already helping you anticipate what people need.",
+            constraint: "The constraint is customer value: customers mostly feel AI as faster content, not a better offer.",
+          },
+          {
+            question: "How do you know the AI is working?",
+            answers: [
+              "The output looks good or saves a little time",
+              "We track time or cost in a specific workflow",
+              "We measure a customer, quality or revenue outcome",
+              "Those outcomes improve the next decision automatically",
+            ],
+            strength: "Your strongest signal is evidence: you measure what AI changes, not just what it produces.",
+            constraint: "The constraint is evidence: nothing yet tells you what the AI is actually worth.",
+          },
+          {
+            question: "If AI disappeared tomorrow, what would happen?",
+            answers: [
+              "Writing and office work would be slower",
+              "Manual handoffs between our systems would return",
+              "Important day-to-day operations would stop",
+              "Our core product or business model would no longer work",
+            ],
+            strength: "Your strongest signal is dependence: AI is already load-bearing in how the business runs.",
+            constraint: "The constraint is dependence: if AI vanished tomorrow, you would lose some speed but nothing structural.",
+          },
+        ];
+
+        const STAGES = ["Write", "Connect", "Act", "Become"];
+
+        const LEVELS = [
+          {
+            heading: "Level 0 — AI writes. You carry the work.",
+            truth: "You are getting useful output, but AI still begins and ends in a chat window. The business around it has not changed yet.",
+            shift: "Write → Connect",
+            action: "Choose one task you repeat every week. Connect AI to the file, inbox or system that holds the context, so nobody has to paste it in again.",
+            cta: "Connect your existing systems with an AI brain →",
+            url: LEVEL_ONE_ARTICLE_URL,
+          },
+          {
+            heading: "Level 1 — AI can see the business.",
+            truth: "Your systems are beginning to share context with AI. People still move most of the work from insight to action.",
+            shift: "Connect → Act",
+            action: "Pick one workflow with a clear trigger and finish line. Let an agent collect the context, prepare the action and pause for approval.",
+            cta: "Develop agents that work for you →",
+            url: LEVEL_TWO_ARTICLE_URL,
+          },
+          {
+            heading: "Level 2 — AI does useful work.",
+            truth: "Agents are completing real tasks inside clear boundaries. The next opportunity is not more automation. It is a different customer promise.",
+            shift: "Act → Become",
+            action: "Ask what you could now deliver in ten minutes that used to take ten days—and whether that should become the product.",
+            cta: "See five companies that became completely AI-native →",
+            url: LEVEL_THREE_ARTICLE_URL,
+          },
+          {
+            heading: "Level 3 — AI changes what the business can be.",
+            truth: "AI is part of the product or operating model, not an add-on. Your edge now depends on judgement, feedback and what your system learns that competitors cannot copy.",
+            shift: "Become → Compound",
+            action: "Find the most important decision your system makes. Capture the outcome and use it to improve the next decision.",
+            cta: "Compare your model with five AI-native companies →",
+            url: LEVEL_THREE_ARTICLE_URL,
+          },
+        ];
+
+        const ACK_MS = 180;
+        let answers = [null, null, null, null, null, null];
+        let advanceTimer = null;
+
+        staticBlock.hidden = true;
+        app.hidden = false;
+        app.setAttribute("aria-live", "polite");
 
         function make(tag, className, text) {
           const node = document.createElement(tag);
@@ -810,64 +1010,133 @@
           return node;
         }
 
-        function askNext() {
-          test.innerHTML = "";
-          test.appendChild(make("p", "test-progress", (index + 1) + " of " + items.length));
-          test.appendChild(make("p", "test-statement", items[index].statement));
-          const actions = make("div", "test-actions");
-          const yes = make("button", "test-button", "Sounds like us");
-          yes.type = "button";
-          yes.addEventListener("click", () => { applies.push(items[index]); advance(); });
-          const no = make("button", "test-button", "Not us");
-          no.type = "button";
-          no.addEventListener("click", advance);
-          actions.appendChild(yes);
-          actions.appendChild(no);
-          test.appendChild(actions);
+        function classify() {
+          const total = answers.reduce((sum, value) => sum + value, 0);
+          let level = total <= 4 ? 0 : total <= 9 ? 1 : total <= 14 ? 2 : 3;
+          // Guardrail 1: sophisticated output is not agentic if a person still carries every step.
+          if (level > 1 && answers[2] < 2) level = 1;
+          // Guardrail 2: AI-native means the customer offer or operating model has changed.
+          if (level === 3 && !(answers[3] === 3 && answers[5] >= 2)) level = 2;
+          return level;
         }
 
-        function advance() {
-          index += 1;
-          if (index < items.length) { askNext(); } else { showResult(); }
+        function evidence() {
+          const hi = Math.max.apply(null, answers);
+          const lo = Math.min.apply(null, answers);
+          const hiIdx = answers[3] === hi ? 3 : answers.indexOf(hi);
+          const loIdx = answers[2] === lo ? 2 : answers.indexOf(lo);
+          return QUESTIONS[hiIdx].strength + " " + QUESTIONS[loIdx].constraint;
+        }
+
+        function showStart() {
+          app.innerHTML = "";
+          const start = make("button", "test-button", "Start the test →");
+          start.type = "button";
+          start.addEventListener("click", () => showQuestion(0));
+          app.appendChild(start);
+        }
+
+        function showQuestion(i) {
+          if (advanceTimer) { clearTimeout(advanceTimer); advanceTimer = null; }
+          app.innerHTML = "";
+
+          const track = make("div", "test-track");
+          const fill = make("span");
+          fill.style.width = ((i / 6) * 100) + "%";
+          track.appendChild(fill);
+          app.appendChild(track);
+          app.appendChild(make("p", "test-progress", "Question " + (i + 1) + " of 6"));
+
+          const q = QUESTIONS[i];
+          const fieldset = make("fieldset", "test-fieldset");
+          fieldset.appendChild(make("legend", "test-statement", q.question));
+          const rows = make("div", "test-answers");
+          q.answers.forEach((answerText, score) => {
+            const label = make("label", "test-answer");
+            const input = document.createElement("input");
+            input.type = "radio";
+            input.name = "test-q" + i;
+            input.value = String(score);
+            if (answers[i] === score) input.checked = true;
+            input.addEventListener("change", () => {
+              answers[i] = score;
+              fill.style.width = (((i + 1) / 6) * 100) + "%";
+              if (advanceTimer) clearTimeout(advanceTimer);
+              advanceTimer = window.setTimeout(() => {
+                advanceTimer = null;
+                if (i < 5) { showQuestion(i + 1); } else { showResult(); }
+              }, ACK_MS);
+            });
+            label.appendChild(input);
+            label.appendChild(make("span", "", answerText));
+            rows.appendChild(label);
+          });
+          fieldset.appendChild(rows);
+          app.appendChild(fieldset);
+
+          if (i > 0) {
+            const back = make("button", "test-back", "← Back");
+            back.type = "button";
+            back.addEventListener("click", () => showQuestion(i - 1));
+            app.appendChild(back);
+          }
+
+          const focusTarget = rows.querySelector("input:checked") || rows.querySelector("input");
+          if (focusTarget) focusTarget.focus({ preventScroll: true });
         }
 
         function showResult() {
-          test.innerHTML = "";
-          const n = applies.length;
-          let lead;
-          if (n === 0) {
-            lead = "None of the five. You’re further along than almost every business I meet — the sessions start past this list, so bring the harder questions.";
-          } else if (n <= 2) {
-            lead = n + " of the five apply. You’re closer than most — but what’s left on the table is the valuable part:";
-          } else if (n <= 4) {
-            lead = n + " of the five apply. Here’s what that’s worth:";
-          } else {
-            lead = "All five. That’s most businesses — it’s just the stuff nobody’s shown you yet. Here’s what’s on the table:";
-          }
-          const leadP = make("p", "test-result-lead");
-          leadP.appendChild(make("strong", "", lead));
-          test.appendChild(leadP);
-          if (n > 0) {
-            const results = make("ul", "diagnostic-list");
-            applies.forEach((item) => { results.appendChild(make("li", "", item.payoff)); });
-            test.appendChild(results);
-          }
-          const closerP = make("p", "diagnostic-closer");
-          if (n > 0) {
-            closerP.appendChild(document.createTextNode("None of this is advanced. That’s what these sessions fix. "));
-          }
-          const cta = make("a", "", n > 0 ? "Book a session →" : "Tell me what you’re working on →");
-          cta.href = "#question";
-          cta.addEventListener("click", () => selectTopic(n > 0 ? "workshop" : "question"));
-          closerP.appendChild(cta);
-          test.appendChild(closerP);
+          app.innerHTML = "";
+          const level = classify();
+          const r = LEVELS[level];
+          const result = make("div", "test-result");
+
+          result.appendChild(make("p", "eyebrow", "Your AI stage"));
+          result.appendChild(make("h3", "", r.heading));
+
+          const ladder = make("p", "stage-ladder");
+          STAGES.forEach((stage, idx) => {
+            if (idx > 0) ladder.appendChild(document.createTextNode(" — "));
+            ladder.appendChild(make(idx === level ? "strong" : "span", "", stage));
+          });
+          result.appendChild(ladder);
+
+          result.appendChild(make("p", "", r.truth));
+          result.appendChild(make("p", "test-label", "The shift to make next"));
+          const shiftP = make("p", "");
+          shiftP.appendChild(make("strong", "", r.shift));
+          result.appendChild(shiftP);
+          result.appendChild(make("p", "test-label", "This week"));
+          result.appendChild(make("p", "", r.action));
+
+          const cta = make("a", "test-cta", r.cta);
+          cta.href = r.url;
+          result.appendChild(cta);
+
+          result.appendChild(make("p", "test-label", "What your answers say"));
+          result.appendChild(make("p", "", evidence()));
+
+          const talk = make("a", "test-talk", "Talk it through with Gerald →");
+          talk.href = "#question";
+          talk.addEventListener("click", () => {
+            selectTopic("assessment-level-" + level);
+            const messageField = document.getElementById("message");
+            if (messageField) messageField.placeholder = "I got Level " + level + ". The workflow I want to change is…";
+          });
+          result.appendChild(talk);
+
           const retake = make("button", "test-retake", "Take it again");
           retake.type = "button";
-          retake.addEventListener("click", () => { index = 0; applies = []; askNext(); });
-          test.appendChild(retake);
+          retake.addEventListener("click", () => {
+            answers = [null, null, null, null, null, null];
+            showQuestion(0);
+          });
+          result.appendChild(retake);
+
+          app.appendChild(result);
         }
 
-        askNext();
+        showStart();
       })();
 
       function showFirstAnswer(answer) {

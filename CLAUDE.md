@@ -2,6 +2,39 @@
 
 Editorial landing page for Gerald Vanderpuye's AI consultancy (brand: Gerald; company: GVDP Ltd; programme: Think AI-Native). Static page + one Vercel serverless function, no framework, no build step.
 
+## Handover to Claude — rebuild the AI test
+
+Gerald wants the current five-question yes/no AI test replaced with a much stronger 60-second assessment. Your next task is to implement it in `index.html` using the complete specification in `AI-TEST-CLAUDE-BRIEF.md`.
+
+The brief was produced after walking through GenAIPI's full AI Readiness Assessment, including its 24 questions, eight departments, score preview and lead-capture gate. Borrow the useful interaction principles—clear progress, behaviour-based answer choices, a named maturity result and one prioritised next action—but do not copy its wording, visuals, percentage score, 24-question length or mandatory contact gate.
+
+The approved GVDP model is:
+
+- **Level 0 — Write:** AI creates content; a person still carries the work.
+- **Level 1 — Connect:** AI can see the business through connected systems.
+- **Level 2 — Act:** agents complete work within human-set boundaries.
+- **Level 3 — Become:** AI changes the product, customer promise or business model.
+
+There are four diagnostic stages but three editorial next-step paths:
+
+- Level 0 → `Connecting your existing systems with an AI brain`
+- Level 1 → `Developing agents to work for you`
+- Levels 2–3 → `Five companies that became completely AI-native`
+
+Those articles have not been written yet. Keep their destinations as clearly named placeholder constants; do not invent or publish the articles.
+
+Implementation boundaries:
+
+- Read and follow every section of `AI-TEST-CLAUDE-BRIEF.md`; it contains the approved question copy, answer copy, scoring thresholds, guardrails, result copy, interaction details and acceptance criteria.
+- Keep the site framework-free and make the change inside `index.html`.
+- Preserve the editorial design and every section outside `#ai-test`, apart from the smallest change needed to pass the result level into the existing Ask Gerald form.
+- Do not add a lead gate, phone field, popup, analytics vendor or external assessment service.
+- Do not send individual assessment answers to Claude or any third party.
+- Test all four result paths, the scoring guardrails, Back, retake, keyboard use, mobile width and reduced motion.
+- Do not push, deploy or publish. Leave the working tree ready for Gerald to review.
+
+At handover, report the files changed, score cases tested, the three placeholder article constants and any genuine remaining risk. Stop after the local implementation and verification.
+
 ## Workflow
 - `index.html` is the entire site (inline CSS/JS) + `assets/` + `api/ask.js` (the Ask Gerald form backend). Do not split the page into more files without being asked.
 - Deploys: push to `main` → Vercel project **gvdp-site** (Impact Brixton team) auto-deploys production; branches get preview URLs. Never use `vercel deploy` from CLI — the `.vercel/` folder points at a superseded project.
@@ -21,6 +54,7 @@ Editorial landing page for Gerald Vanderpuye's AI consultancy (brand: Gerald; co
 The Ask Gerald form POSTs JSON to `/api/ask`, which (a) drafts a first answer with Claude in Gerald's voice — clearly labelled as his AI on the page — and (b) emails the question + draft to Gerald via Resend. Each half degrades gracefully until its env var is set in Vercel (gvdp-site → Settings → Environment Variables): `ANTHROPIC_API_KEY` (Claude draft) and `RESEND_API_KEY` (email; optional `ASK_TO_EMAIL` defaults to gerald@hey.com, `ASK_FROM_EMAIL` defaults to Resend's onboarding sender). With neither set, the API returns 503 and the page falls back to a prefilled mailto:gerald@hey.com link — the form is never a dead end.
 
 ## Open work (in order)
+0. AI-test rebuild implemented 2026-09-02 per `AI-TEST-CLAUDE-BRIEF.md` — in the working tree, uncommitted, awaiting Gerald's review. Still open: the three article URLs (placeholder constants `LEVEL_ONE/TWO/THREE_ARTICLE_URL` in `index.html` point to `#`), and `api/ask.js` normalises unknown topics to "question", so the `assessment-level-N` topic reaches the inbox as a plain question until that mapping is extended.
 1. Add `ANTHROPIC_API_KEY` and `RESEND_API_KEY` env vars in Vercel (see above). Resend test mode only delivers to the account owner's email — sign up with gerald@hey.com, or verify a sending domain.
 2. Stripe partnership band removed from the page 2026-08-31 (Gerald's call) — the Stripe mention in the evidence client-line stays; re-add a band only if he asks. Heineken-session photo still pending a real photo. Ratio Property pull-quote pending the founder's sign-off (drafts sent to Gerald).
 3. Real client pull-quote when Gerald supplies one; company number in footer once the VCC Ltd → GVDP Ltd rename completes.
