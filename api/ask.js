@@ -90,7 +90,12 @@ async function sendEmail({ name, email, company, message, answer, topic }) {
       text: lines.join("\n"),
     }),
   });
-  return response.ok;
+  if (!response.ok) {
+    const detail = await response.text().catch(() => "");
+    console.error("Resend rejected the send:", response.status, detail);
+    return { ok: false, status: response.status };
+  }
+  return { ok: true };
 }
 
 export default async function handler(req, res) {
@@ -126,14 +131,26 @@ export default async function handler(req, res) {
   }
 
   let emailed = false;
+  let emailStatus = null;
   try {
-    emailed = await sendEmail({ name, email, company, message, answer, topic });
+    const sendResult = await sendEmail({ name, email, company, message, answer, topic });
+    if (sendResult === false) {
+      emailStatus = "no-key";
+    } else {
+      emailed = sendResult.ok;
+      if (!sendResult.ok) emailStatus = "rejected-" + sendResult.status;
+    }
   } catch (error) {
     console.error("sendEmail failed:", error);
+    emailStatus = "network-error";
   }
 
   if (!emailed && !answer) {
-    return res.status(503).json({ ok: false, error: "Delivery is not configured yet." });
+    return res.status(503).json({
+      ok: false,
+      error: emailStatus === "no-key" ? "Delivery is not configured yet." : "Email delivery failed.",
+      emailStatus,
+    });
   }
   return res.status(200).json({ ok: true, emailed, answer });
 }
