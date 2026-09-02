@@ -320,6 +320,18 @@
       }
       .test-button:hover { background: var(--ink); color: var(--paper); }
       .test-result-lead { margin: 0 0 2rem; font-size: clamp(1.08rem, 1.4vw, 1.32rem); max-width: 41rem; }
+      .report-form { display: flex; gap: 1rem; flex-wrap: wrap; align-items: stretch; margin-top: .4rem; }
+      .report-form input {
+        flex: 1 1 14rem;
+        padding: .8rem .2rem;
+        border: 0;
+        border-bottom: 1px solid var(--ink);
+        background: transparent;
+        color: var(--ink);
+        font: inherit;
+      }
+      .report-form input:focus { outline: 0; border-bottom-color: var(--orange); box-shadow: 0 2px 0 var(--orange); }
+      .report-status { margin: .8rem 0 0; font-size: .9rem; min-height: 1.4em; }
       .test-retake {
         margin-top: 1.6rem;
         display: inline-block;
@@ -1109,21 +1121,54 @@
           result.appendChild(make("p", "test-label", "This week"));
           result.appendChild(make("p", "", r.action));
 
-          const cta = make("a", "test-cta", r.cta);
-          cta.href = r.url;
-          result.appendChild(cta);
-
           result.appendChild(make("p", "test-label", "What your answers say"));
           result.appendChild(make("p", "", evidence()));
 
-          const talk = make("a", "test-talk", "Talk it through with Gerald →");
-          talk.href = "#question";
-          talk.addEventListener("click", () => {
-            selectTopic("assessment-level-" + level);
-            const messageField = document.getElementById("message");
-            if (messageField) messageField.placeholder = "I got Level " + level + ". The workflow I want to change is…";
+          result.appendChild(make("p", "test-label", "Get the full report"));
+          result.appendChild(make("p", "", "Enter your email and I’ll send you the full report — the three stages of building, and the one I’d read first at your level. It comes from me, personally."));
+          const reportForm = make("form", "report-form");
+          const reportEmail = document.createElement("input");
+          reportEmail.type = "email";
+          reportEmail.required = true;
+          reportEmail.autocomplete = "email";
+          reportEmail.placeholder = "you@yourbusiness.com";
+          reportEmail.setAttribute("aria-label", "Email for the report");
+          const reportSend = make("button", "submit-button", "Send me the report");
+          reportSend.type = "submit";
+          const reportStatus = make("p", "report-status");
+          reportStatus.setAttribute("role", "status");
+          reportForm.appendChild(reportEmail);
+          reportForm.appendChild(reportSend);
+          reportForm.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            reportSend.disabled = true;
+            reportStatus.textContent = "Sending…";
+            try {
+              const response = await fetch("/api/ask", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  name: "AI test reader",
+                  email: reportEmail.value,
+                  message: "Send me the full report. My result: " + r.heading,
+                  topic: "assessment-level-" + level,
+                }),
+              });
+              const resBody = await response.json().catch(() => null);
+              if (!response.ok || !resBody || !resBody.ok) throw new Error("send failed");
+              reportForm.hidden = true;
+              reportStatus.textContent = "Done — the report is on its way to " + reportEmail.value + ". I send these personally.";
+            } catch (error) {
+              reportSend.disabled = false;
+              reportStatus.textContent = "That didn’t go through. ";
+              const link = make("a", "", "Email me for the report instead");
+              link.href = "mailto:gerald@hey.com?subject=" + encodeURIComponent("AI test Level " + level + " — send me the report") + "&body=" + encodeURIComponent("My result: " + r.heading);
+              reportStatus.appendChild(link);
+              reportStatus.appendChild(document.createTextNode("."));
+            }
           });
-          result.appendChild(talk);
+          result.appendChild(reportForm);
+          result.appendChild(reportStatus);
 
           const retake = make("button", "test-retake", "Take it again");
           retake.type = "button";
